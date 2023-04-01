@@ -513,7 +513,7 @@ class FrontController extends Controller
     {
         $query = $request->s;
         $allPosts = $this->blog->where('title', 'LIKE', '%' . $query . '%')->where('status','publish')->orderBy('title', 'asc')->paginate(6);
-        $bcategories = $this->bcategory->get();
+        $bcategories = $this->bcategory->withCount('blogs')->having('blogs_count', '>', 0)->get();
         $latestPosts = $this->blog->orderBy('created_at', 'DESC')->where('status','publish')->take(3)->get();
 
         return view('frontend.pages.blogs.search',compact('allPosts','query','latestPosts','bcategories'));

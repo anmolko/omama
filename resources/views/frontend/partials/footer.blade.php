@@ -360,6 +360,7 @@
 <script src="{{asset('assets/frontend/js/sal.js')}}"></script>
 <!-- main js -->
 <script src="{{asset('assets/frontend/js/main.js')}}"></script>
+@yield('js')
+@stack('scripts')
 </body>
-
 </html>

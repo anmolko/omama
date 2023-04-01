@@ -184,7 +184,7 @@
                                         id="profile-foreground-img-file-input" onchange="loadFile(event)" name="image" required
                                        class="profile-foreground-img-file-input" >
 
-                                    <figcaption class="figure-caption">*use image minimum of 850 x 567px </figcaption>
+                                    <figcaption class="figure-caption">*use image minimum of 990 x 600px </figcaption>
                                     <div class="invalid-feedback" >
                                             Please select a image.
                                         </div>

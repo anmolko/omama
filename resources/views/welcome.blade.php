@@ -658,8 +658,8 @@
                                             </div>
                                             <div class="sc-blog-date-box">
                                                 <div class="sc-date-box">
-                                                    <h4 class="title">25</h4>
-                                                    <span class="sub-title">oct</span>
+                                                    <h4 class="title">{{date('d', strtotime($post->created_at))}}</h4>
+                                                    <span class="sub-title">{{date('M', strtotime($post->created_at))}}</span>
                                                 </div>
                                                 <div class="sc-blog-social text-center">
                                                     <ul class="list-gap">
