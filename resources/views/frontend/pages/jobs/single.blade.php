@@ -21,93 +21,84 @@
 @endsection
 @section('content')
 
-    <div class="page__banner" data-background="{{asset('assets/frontend/img/pages/page-banner.jpg')}}">
-        <div class="container">
+    <div class="sc-breadcrumb-style sc-pt-135 sc-pb-110">
+        <div class="container position-relative">
             <div class="row">
-                <div class="col-xl-12">
-                    <div class="page__banner-content">
-                        <span>Job</span>
-                        <ul>
-                            <li><a href="index.html">Home</a><span>|</span></li>
-                            <li>{{ @$singleJob->name }}</li>
-                        </ul>
-                        <h1>Job Details</h1>
+                <div class="col-lg-12">
+                    <div class="sc-slider-content p-z-idex">
+                        <div class="sc-slider-subtitle">Home - {{ @$singleJob->name }}</div>
+                        <h1 class="slider-title white-color sc-mb-25 sc-sm-mb-15">Job Details</h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="project__details section-padding">
+    <div class="sc-project-pages-area sc-pt-100 sc-md-pt-75 sc-pb-160 sc-md-pb-100">
         <div class="container">
             <div class="row">
-                <div class="col-xl-12">
-                    <div class="project__details-area">
-                        <div class="project__details-area-image dark__image text-center">
-                            <img src="{{ asset('/images/job/'.@$singleJob->image) }}" alt="">
-                        </div>
-                        <div class="project__details-area-meta">
-                            <div class="project__details-area-meta-item">
-                                <h6>Expires on :<span> {{date('M j, Y',strtotime(@$singleJob->end_date))}}</span></h6>
-                            </div>
-                            @if(@$singleJob->getJobCategories(@$singleJob->category_ids))
-                                <div class="project__details-area-meta-item">
-                                    <h6>Category :<span>{{ucwords(@$singleJob->getJobCategories($singleJob->category_ids))}}</span></h6>
-                                </div>
+                <div class="col-lg-12">
+                    <div class="sc-project-content-area">
+                        <div class="sc-project-details-inner">
+                            @if(@$singleJob->title)
+                            <h2 class="title sc-mb-25">{{@$singleJob->title}}</h2>
                             @endif
-                            @if($singleJob->extra_company)
-                                <div class="project__details-area-meta-item">
-                                    <h6>Company :<span>{{ucwords(@$singleJob->extra_company)}}</span></h6>
-                                </div>
-                            @endif
-                            @if($singleJob->min_qualification)
-                                <div class="project__details-area-meta-item">
-                                    <h6>Min Qualification :<span>{{ucwords(@$singleJob->min_qualification)}}</span></h6>
-                                </div>
-                            @endif
-                        </div>
-                        @if($singleJob->salary || $singleJob->required_number)
-                            <div class="project__details-area-meta" style="padding-top: 5px;">
-                                @if($singleJob->salary)
-                                    <div class="project__details-area-meta-item">
-                                        <h6>Salary :<span>{{@$singleJob->salary}}</span></h6>
+                            <div class="row sc-mb-40">
+                                <div class="col-lg-9">
+                                    <div class="sc-project-image">
+                                        <img src="{{ asset('/images/job/'.@$singleJob->image) }}" />
                                     </div>
-                                @endif
-                                @if($singleJob->required_number)
-                                    <div class="project__details-area-meta-item">
-                                        <h6>Required Number :<span>{{@$singleJob->required_number}}</span></h6>
-                                    </div>
-                                @endif
-
-                            </div>
-                        @endif
-                        <div class="row job_details">
-                            <div class="col-xl-8 col-lg-8 lg-mb-60">
-                                <h2 class="mb-30">{{ ucwords(@$singleJob->name) }}</h2>
-                                <div class="project__details-area-custom">
-                                    {!! $singleJob->description !!}
                                 </div>
-                                <div class="row mt-45 mb-60">
-                                    <div class="col-md-4">
-                                        <div class="news__details-left-share">
-                                            <h6>Share:</h6>
-                                            <ul>
+                                <div class="col-lg-3">
+                                    <div class="sc-project-inner-category sc-md-mt-60">
+                                        <div class="sc-inner-title">
+                                            <h3 class="cate-title white-color">{{ ucwords(@$singleJob->name) }}:</h3>
+                                        </div>
+                                        <div class="sc-inner-list">
+                                            <ul class="list-gap">
                                                 <li>
-                                                    <a href="#"><i class="fab fa-facebook-f" onclick='fbShare("{{route('job.single',$singleJob->slug)}}")'></i></a>
+                                                    <span>Expires on :</span>
+                                                    <h5 class="title white-color">{{date('M j, Y',strtotime(@$singleJob->end_date))}}</h5>
                                                 </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-twitter"  onclick='twitShare("{{route('job.single',$singleJob->slug)}}","{{ $singleJob->title }}")'></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-whatsapp" onclick='whatsappShare("{{route('job.single',$singleJob->slug)}}","{{ $singleJob->title }}")'></i></a>
-                                                </li>
+                                                @if(@$singleJob->getJobCategories(@$singleJob->category_ids) !== 'N/A')
+                                                    <li>
+                                                        <span>Category</span>
+                                                        <h5 class="title white-color">{{ucwords(@$singleJob->getJobCategories($singleJob->category_ids))}}</h5>
+                                                    </li>
+                                                @endif
+                                                @if($singleJob->extra_company)
+                                                    <li>
+                                                        <span>Extra Company</span>
+                                                        <h5 class="title white-color">{{ucwords(@$singleJob->extra_company)}}</h5>
+                                                    </li>
+                                                @endif
+                                                @if($singleJob->min_qualification)
+                                                    <li>
+                                                        <span>Min. Qualification</span>
+                                                        <h5 class="title white-color">{{ucwords(@$singleJob->min_qualification)}}</h5>
+                                                    </li>
+                                                @endif
+                                                @if($singleJob->salary)
+                                                    <li>
+                                                        <span>Salary</span>
+                                                        <h5 class="title white-color">{{@$singleJob->salary}}</h5>
+                                                    </li>
+                                                @endif
+                                                @if($singleJob->required_number)
+                                                    <li>
+                                                        <span>Required Number</span>
+                                                        <h5 class="title white-color">{{@$singleJob->required_number}}</h5>
+                                                    </li>
+                                                @endif
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-4">
-                                @include('frontend.pages.jobs.sidebar')
+                            <div class="sc-project-text">
+                                <div class="des sc-mb-25 sc-details-check-text custom-description">
+                                    {!! $singleJob->description !!}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -132,9 +123,9 @@
             window.open("https://api.whatsapp.com/send?text=" + message);
         }
         $( document ).ready(function() {
-            let selector = $('.job_details').find('table').length;
+            let selector = $('.custom-description').find('table').length;
             if(selector>0){
-                $('.job_details').find('table').addClass('table table-bordered');
+                $('.custom-description').find('table').addClass('table table-bordered');
             }
         });
     </script>

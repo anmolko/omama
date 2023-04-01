@@ -291,7 +291,7 @@
                 <form method="get" id="searchform" action="{{route('searchJob')}}">
                     <div class="form-group">
                         <input  id="s" name="s" type="text" class="form-control" placeholder="Find Jobs here.." oninvalid="this.setCustomValidity('Type a keyword')" oninput="this.setCustomValidity('')" required>
-                        <button type="submit"><i class="fal fa-search"></i>
+                        <button type="submit"><i class="fal fa-search"></i></button>
                     </div>
                 </form>
             </div>

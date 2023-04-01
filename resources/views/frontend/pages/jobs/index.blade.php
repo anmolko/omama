@@ -13,64 +13,60 @@
     </style>
 @endsection
 @section('content')
-    <div class="page__banner" data-background="{{asset('assets/frontend/img/pages/page-banner.jpg')}}">
-        <div class="container">
+    <div class="sc-breadcrumb-style sc-pt-135 sc-pb-110">
+        <div class="container position-relative">
             <div class="row">
-                <div class="col-xl-12">
-                    <div class="page__banner-content">
-                        <span>Our Jobs</span>
-                        <ul>
-                            <li><a href="/">Home</a><span>|</span></li>
-                            <li>List</li>
-                        </ul>
-                        <h1>Jobs</h1>
+                <div class="col-lg-12">
+                    <div class="sc-slider-content p-z-idex">
+                        <div class="sc-slider-subtitle">Home - Our Jobs</div>
+                        <h1 class="slider-title white-color sc-mb-25 sc-sm-mb-15">Jobs</h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="project__area section-padding">
+    <div class="sc-service-section-five sc-pt-100 sc-md-pt-75 sc-pb-160 sc-md-pb-100">
         <div class="container">
-            <div class="row">
-                @if(count($alljobs) > 0)
+            @if(count($alljobs) > 0)
+                <div class="row">
                     @foreach($alljobs as $job)
-                        <div class="col-xl-4 col-md-6 mb-30">
-                            <div class="project__area-item">
-                                <img src="{{ ($job->image !== null) ? asset('/images/job/thumb/thumb_'.@$job->image): asset('assets/frontend/images/win.png')}}" alt="">
-                                <div class="project__area-item-content">
-                                    <h4><a href="{{route('job.single',@$job->slug)}}">{{ ucfirst($job->name)}}</a></h4>
-                                    <span>
-                                        @if(@$job->end_date >= $today)
-                                            {{date('M j, Y',strtotime(@$job->start_date))}} - {{date('M j, Y',strtotime(@$job->end_date))}}
-                                        @else
-                                            Expired
-                                        @endif
-                                    </span>
-                                </div>
-                                <div class="project__area-item-icon">
-                                    <a href="{{route('job.single',@$job->slug)}}"><i class="far fa-arrow-right"></i></a>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="sc-service-style-four sc-mb-25 text-center">
+                                <i class="p-z-idex position-relative icomoon {{$loop->even?'icon-stragy':'icon-risk'}}"></i>
+                                <h4 class="title p-z-idex position-relative">
+                                    <a class="title" href="{{route('job.single',@$job->slug)}}">{{ucfirst($job->name)}}</a>
+                                </h4>
+                                <p class="des p-z-idex position-relative">
+                                    <i class="icon-calender"></i>
+                                    @if(@$job->end_date >= $today)
+                                        {{date('M j, Y',strtotime(@$job->start_date))}} - {{date('M j, Y',strtotime(@$job->end_date))}}
+                                    @else
+                                        Expired
+                                    @endif
+                                </p>
+                                <div class="sc-service-button">
+                                    <img src="{{ ($job->image !== null) ? asset('/images/job/thumb/thumb_'.@$job->image): asset('assets/frontend/images/win.png')}}" alt="Service" />
+                                    <div class="service-btn">
+                                        <a class="sc-service-btn" href="{{route('job.single',@$job->slug)}}"><i class="icon-sliuder-arrow2"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     @endforeach
-                @else
-                    <div class="col-xl-8 col-lg-8 lg-mb-60">
-                        <div class="error-page">
-                            <h2>It seems there are no jobs posted at the moment.</h2>
-                            <p>The jobs you are looking for is not available or has not been posted yet!</p>
-                            <a class="btn-one" href="/">Back to Home<i class="far fa-chevron-double-right"></i></a>
+                </div>
+            @else
+                <div id="sc-page-error" class="sc-page-error">
+                    <div class="error-text">
+                        <h1 class="error-code sc-mb-30">404</h1>
+                        <h3 class="error-message sc-mb-30">Jobs Not Found</h3>
+                        <div class="sc-error-btn">
+                            <a class="sc-primary-btn" href="/">Back to Homepage </a>
                         </div>
                     </div>
-                @endif
-
-
-            </div>
-            <div class="row mt-70">
-                <div class="col-xl-12 t-center">
-                    {{ $alljobs->links('vendor.pagination.default') }}
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 @endsection

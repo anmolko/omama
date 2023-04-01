@@ -466,7 +466,7 @@
                             <div class="row">
                                 @php $i=2; @endphp
                                 @foreach(@$recruitments as $index=>$recruitment)
-                                    <div class="col-lg-3 col-md-6 sal-animate mt-4" data-sal="slide-up" data-sal-duration="800" data-sal-delay="{{$i+1}}00">
+                                    <div class="col-lg-3 col-md-6 sal-animate mt-4" data-sal="slide-up" data-sal-duration="800" data-sal-delay="{{ ($i+1)*100}}">
                                         <div class="sc-business-item text-center sc-md-mb-35">
                                             <div class="sc-icon">
                                                 <span>{{$index+1}}</span>
@@ -550,6 +550,7 @@
                                     <a class="title" href="{{route('job.single',@$job->slug)}}">{{ucfirst($job->name)}}</a>
                                 </h4>
                                 <p class="des p-z-idex position-relative">
+                                    <i class="icon-calender"></i>
                                     @if(@$job->end_date >= $today)
                                         {{date('M j, Y',strtotime(@$job->start_date))}} - {{date('M j, Y',strtotime(@$job->end_date))}}
                                     @else
