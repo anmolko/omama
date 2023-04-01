@@ -35101,7 +35101,7 @@ PAGE LOAD ANIMATION
 .sc-footer-section .sc-contact-number {
   padding-top: 18px;
 }
-.sc-footer-section .sc-contact-number .icon-phone {
+.sc-footer-section .sc-contact-number .icons {
   width: 58px;
   height: 61px;
   background: #e42032;
@@ -35113,7 +35113,7 @@ PAGE LOAD ANIMATION
   font-size: 35px;
   margin-right: 24px;
 }
-.sc-footer-section .sc-contact-number .icon-phone.white-bg-color {
+.sc-footer-section .sc-contact-number .icons.white-bg-color {
   background: #fff;
   color: #e42032;
 }

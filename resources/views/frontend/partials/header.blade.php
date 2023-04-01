@@ -10,7 +10,7 @@
     <meta name="description" content="@if(!empty(@$setting_data->meta_description)) {{ucwords(@$setting_data->meta_description)}} @else Omama Manpower Pvt Ltd @endif"/>
     <meta name="keywords" content="@if(!empty(@$setting_data->meta_tags)) {{@$setting_data->meta_tags}} @else Omama Manpower Pvt Ltd @endif">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link rel="canonical" href="http://omama.com.np/" />
+    <link rel="canonical" href="https://omamamanpower.com" />
 
     @if (\Request::is('/'))
         <title>@if(!empty(@$setting_data->website_name)) {{ucwords(@$setting_data->website_name)}} @else Omama Manpower Pvt Ltd @endif </title>

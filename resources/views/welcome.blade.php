@@ -389,7 +389,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="sc-about-text-box sc-md-mt-50 sc-pl-30 sc-md-pl-0"
+                        <div class="sc-about-text-box sc-md-mt-50 sc-pl-80 sc-md-pl-0"
                             data-sal="slide-left"
                             data-sal-duration="800">
                             <div class="sc-heading-area sc-mb-35">
@@ -613,22 +613,22 @@
     @endif
     @if(count($subsidiaries) > 0)
         <div class="sc-brand-section-area sc-pt-100 sc-md-pt-80 sc-md-pb-80">
-        <div class="container">
-            <div class="swiper sc-brand-slider" style="background: #353950;">
-                <div class="swiper-wrapper">
-                    @foreach($subsidiaries as $subsidiary)
-                        <div class="swiper-slide">
-                            <div class="sc-brand-image-box text-center">
-                                <div class="sc-brand-image">
-                                    <a href="{{@$subsidiary->link}}" target="{{@$subsidiary->link ? '_blank':''}}"><img src="{{asset('/images/subsidiary/'.@$subsidiary->image)}}" alt="Brand" /></a>
+            <div class="container">
+                <div class="swiper sc-brand-slider" style="background: #353950;">
+                    <div class="swiper-wrapper">
+                        @foreach($subsidiaries as $subsidiary)
+                            <div class="swiper-slide">
+                                <div class="sc-brand-image-box text-center">
+                                    <div class="sc-brand-image">
+                                        <a href="{{@$subsidiary->link}}" target="{{@$subsidiary->link ? '_blank':''}}"><img src="{{asset('/images/subsidiary/'.@$subsidiary->image)}}" alt="Brand" /></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     @endif
 
     @if(count($latestPosts) > 0)

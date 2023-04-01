@@ -215,8 +215,8 @@
                                                             </div>
                                                             <div class="flex-grow-1 overflow-hidden">
                                                                 <p class="mb-1">Website :</p>
-                                                                <a href="#"
-                                                                   class="fw-semibold">www.velzon.com</a>
+                                                                <a href="/" target="_blank"
+                                                                   class="fw-semibold">omamamanpower.com</a>
                                                             </div>
                                                         </div>
                                                     </div>
