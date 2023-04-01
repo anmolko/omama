@@ -35233,11 +35233,12 @@ PAGE LOAD ANIMATION
   padding: 0;
   list-style: none;
 }
-.sc-footer-section .footer-about .about-icon li {
+.about-icon li {
   display: inline-block;
   padding-right: 5px;
 }
-.sc-footer-section .footer-about .about-icon li i {
+
+.about-icon li i {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 42px;
   color: #fff;
@@ -35251,11 +35252,14 @@ PAGE LOAD ANIMATION
   -moz-transition: 0.4s;
   font-size: 16px;
 }
-.sc-footer-section .footer-about .about-icon li i:hover {
+.contact-form-social li a i{
+    background: rgb(3 4 28);
+}
+.about-icon li i:hover {
   background: #fff;
   color: #e42032;
 }
-.sc-footer-section .footer-about .about-icon li:last-child {
+.about-icon li:last-child {
   margin-right: 0;
 }
 .sc-footer-section .footer-menu-area .footer-menu-list {

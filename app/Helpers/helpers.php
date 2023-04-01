@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Models\Menu;
 use App\Models\MenuItem;
+use CountryState;
 
 if (!function_exists('getNepaliMonth')) {
     $selected_month = '';
@@ -207,5 +208,24 @@ if (!function_exists('get_solution_icons')) {
         }
 
         return $icon;
+    }
+}
+
+if (!function_exists('get_country')) {
+    /**
+     * @param $code
+     * @return string
+     */
+    function get_country($code): string
+    {
+        $countries      = CountryState::getCountries();
+        $name= '';
+        foreach ($countries as $key=>$value){
+            if($key == $code){
+                $name = $value;
+            }
+        }
+        return $name;
+
     }
 }
