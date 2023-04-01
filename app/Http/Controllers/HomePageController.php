@@ -66,6 +66,7 @@ class HomePageController extends Controller
             'welcome_subheading'       => $request->input('welcome_subheading'),
             'welcome_description'      => $request->input('welcome_description'),
             'welcome_side_image'       => $request->input('welcome_side_image'),
+            'welcome_video_link'       => $request->input('welcome_video_link'),
             'welcome_button'           => $request->input('welcome_button'),
             'welcome_link'             => $request->input('welcome_link'),
             'created_by'                => Auth::user()->id,
@@ -137,6 +138,7 @@ class HomePageController extends Controller
         $update_theme->welcome_subheading       =  $request->input('welcome_subheading');
         $update_theme->welcome_description      =  $request->input('welcome_description');
         $update_theme->welcome_side_image       =  $request->input('welcome_side_image');
+        $update_theme->welcome_video_link       =  $request->input('welcome_video_link');
         $update_theme->welcome_button           =  $request->input('welcome_button');
         $update_theme->welcome_link             =  $request->input('welcome_link');
         $update_theme->updated_by               =  Auth::user()->id;

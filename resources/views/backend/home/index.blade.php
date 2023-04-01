@@ -228,6 +228,11 @@
                                                         </label>
                                                     </div>
                                                     <div class="mb-3">
+                                                        <label class="form-label" for="welcome-video-input">Youtube Video Link </label>
+                                                        <input type="text" class="form-control" id="welcome-video-input" name="welcome_video_link" value="{{@$homesettings->welcome_video_link}}"
+                                                               placeholder="Enter video link">
+                                                    </div>
+                                                    <div class="mb-3">
                                                         <label for="choices-publish-status-input" class="form-label">Image Alignment</label>
 
                                                         <select class="form-select" id="choices-publish-status-input" name="welcome_side_image" data-choices data-choices-search-false>

@@ -31,13 +31,14 @@
                             </div>
                         </div>
 
-{{--                        <div class="position-relative mb-3">--}}
-{{--                            <label class="form-label">Description <span class="text-muted text-danger">*</span></label>--}}
-{{--                            <textarea class="form-control" maxlength="150" name="why_description" placeholder="Enter why us description" rows="4" required>{{@$homesettings->why_description}}</textarea>--}}
-{{--                            <div class="invalid-tooltip">--}}
-{{--                                Please enter the  description.--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        <div class="position-relative mb-3">
+                            <label class="form-label">Video Link <span class="text-muted text-danger">*</span></label>
+                            <input type="text" class="form-control" maxlength="120" name="why_description" value="{{@$homesettings->why_description}}"
+                                   placeholder="Enter youtube video link">
+                            <div class="invalid-tooltip">
+                                Please enter the video link.
+                            </div>
+                        </div>
 
 {{--                        <div class="position-relative mb-3">--}}
 {{--                            <label class="form-label">Button</label>--}}

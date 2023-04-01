@@ -54,12 +54,28 @@
                                     data-sal="slide-up"
                                     data-sal-duration="800"
                                     data-sal-delay="250"
+                                    style="position: absolute;"
                                 >
                                     <img
                                         class="sc-border-radius"
                                         src="{{asset('/images/home/welcome/'.@$homepage_info->what_image5)}}"
                                         alt="Statistics"
                                     />
+                                    @if(@$homepage_info->why_description)
+                                        <div class="video-area video-center d-flex align-items-center "  data-sal="slide-up"
+                                             data-sal-duration="800" data-sal-delay="250">
+                                            <div class="sc-video-btn sc-mr-15">
+                                                <a
+                                                    class="popup-videos-button"
+                                                    data-autoplay="true"
+                                                    data-vbtype="video"
+                                                    href="{{@$homepage_info->why_description}}"
+                                                >
+                                                    <i class="icon-play_video"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -192,24 +208,28 @@
                         <div class="col-lg-6">
                             <div class="sc-about-group-image">
                                 <img
-                                    src="{{ $homepage_info->welcome_image ? asset('/images/home/welcome/'.@$homepage_info->welcome_image):''}}"
+                                    src="{{ @$homepage_info->welcome_image ? asset('/images/home/welcome/'.@$homepage_info->welcome_image):''}}"
                                     alt="About"
                                     data-sal="slide-right"
                                     data-sal-duration="800"
                                     data-sal-delay="300"
                                 />
-                                <div class="video-area video-center d-flex align-items-center ">
-                                    <div class="sc-video-btn sc-mr-15">
-                                        <a
-                                            class="popup-videos-button"
-                                            data-autoplay="true"
-                                            data-vbtype="video"
-                                            href="https://www.youtube.com/watch?v=7e90gBu4pas"
-                                        >
-                                            <i class="icon-play_video"></i>
-                                        </a>
+                                @if(@$homepage_info->welcome_video_link)
+                                    <div class="video-area video-center d-flex align-items-center "  data-sal="slide-right"
+                                         data-sal-duration="800"
+                                         data-sal-delay="300">
+                                        <div class="sc-video-btn sc-mr-15">
+                                            <a
+                                                class="popup-videos-button"
+                                                data-autoplay="true"
+                                                data-vbtype="video"
+                                                href="{{@$homepage_info->welcome_video_link}}"
+                                            >
+                                                <i class="icon-play_video"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
 
                         </div>
@@ -591,16 +611,16 @@
             </div>
         </div>
     @endif
-
-    <div class="sc-brand-section-area sc-pt-100 sc-md-pt-80 sc-md-pb-80">
+    @if(count($subsidiaries) > 0)
+        <div class="sc-brand-section-area sc-pt-100 sc-md-pt-80 sc-md-pb-80">
         <div class="container">
-            <div class="swiper sc-brand-slider primary-bg-color">
+            <div class="swiper sc-brand-slider" style="background: #353950;">
                 <div class="swiper-wrapper">
-                    @foreach($clients as $client)
+                    @foreach($subsidiaries as $subsidiary)
                         <div class="swiper-slide">
                             <div class="sc-brand-image-box text-center">
                                 <div class="sc-brand-image">
-                                    <a href="#"><img src="{{asset('/images/clients/'.@$client->image)}}" alt="Brand" /></a>
+                                    <a href="{{@$subsidiary->link}}" target="{{@$subsidiary->link ? '_blank':''}}"><img src="{{asset('/images/subsidiary/'.@$subsidiary->image)}}" alt="Brand" /></a>
                                 </div>
                             </div>
                         </div>
@@ -609,68 +629,69 @@
             </div>
         </div>
     </div>
+    @endif
 
     @if(count($latestPosts) > 0)
         <div class="sc-global-section-area sc-pb-90">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6" data-sal="slide-right" data-sal-duration="800">
-                    <div class="sc-global-item sc-md-mb-55">
-                        <div class="sc-heading-area sc-mb-30">
-                            <span class="sub-title"><i class="icon-line"></i>  Latest News & Blogs</span>
-                            <h2 class="title">
-                                Recent Story from our<span class="active"> Journal </span>
-                            </h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6" data-sal="slide-right" data-sal-duration="800">
+                        <div class="sc-global-item sc-md-mb-55">
+                            <div class="sc-heading-area sc-mb-30">
+                                <span class="sub-title"><i class="icon-line"></i>  Latest News & Blogs</span>
+                                <h2 class="title">
+                                    Recent Story from our<span class="active"> Journal </span>
+                                </h2>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="swiper sc-blog-slider">
-                        <div class="swiper-wrapper">
-                            @foreach(@$latestPosts as $post)
-                                <div class="swiper-slide">
-                                    <div class="sc-blog-style2">
-                                        <div class="blog-img">
-                                            <a href="{{route('blog.single',$post->slug)}}"
-                                            ><img src="{{asset('/images/blog/'.@$post->image)}}" alt="Blog"
-                                                /></a>
-                                        </div>
-                                        <div class="sc-blog-date-box">
-                                            <div class="sc-date-box">
-                                                <h4 class="title">25</h4>
-                                                <span class="sub-title">oct</span>
+                    <div class="col-lg-12">
+                        <div class="swiper sc-blog-slider">
+                            <div class="swiper-wrapper">
+                                @foreach(@$latestPosts as $post)
+                                    <div class="swiper-slide">
+                                        <div class="sc-blog-style2">
+                                            <div class="blog-img">
+                                                <a href="{{route('blog.single',$post->slug)}}"
+                                                ><img src="{{asset('/images/blog/'.@$post->image)}}" alt="Blog"
+                                                    /></a>
                                             </div>
-                                            <div class="sc-blog-social text-center">
-                                                <ul class="list-gap">
-                                                    <li><i class="icon-david2"></i> {{ucfirst(@$post->category->name)}}</li>
-                                                </ul>
+                                            <div class="sc-blog-date-box">
+                                                <div class="sc-date-box">
+                                                    <h4 class="title">25</h4>
+                                                    <span class="sub-title">oct</span>
+                                                </div>
+                                                <div class="sc-blog-social text-center">
+                                                    <ul class="list-gap">
+                                                        <li><i class="icon-david2"></i> {{ucfirst(@$post->category->name)}}</li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="sc-blog-text">
-                                            <h4>
-                                                <a class="title" href="{{route('blog.single',$post->slug)}}"
-                                                >{{ucfirst($post->title)}}</a
-                                                >
-                                            </h4>
-                                            <div class="des">
-                                                {!! elipsis($post->description) !!}
-                                            </div>
-                                            <div class="sc-blog-btn">
-                                                <a class="sc-transparent-btn" href="{{route('blog.single',$post->slug)}}">Read Article</a>
+                                            <div class="sc-blog-text">
+                                                <h4>
+                                                    <a class="title" href="{{route('blog.single',$post->slug)}}"
+                                                    >{{ucfirst($post->title)}}</a
+                                                    >
+                                                </h4>
+                                                <div class="des">
+                                                    {!! elipsis($post->description) !!}
+                                                </div>
+                                                <div class="sc-blog-btn">
+                                                    <a class="sc-transparent-btn" href="{{route('blog.single',$post->slug)}}">Read Article</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     @endif
-
-    <div class="sc-about-area sc-about-section-three position-relative sc-pt-120 sc-md-pt-100 sc-pb-140 sc-md-pb-90">
+    @if(@$setting_data->grievance_heading)
+        <div class="sc-about-area sc-about-section-three position-relative sc-pt-120 sc-md-pt-100 sc-pb-140 sc-md-pb-90" style=" background: none;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6" data-sal="slide-right" data-sal-duration="800">
@@ -701,6 +722,7 @@
             </div>
         </div>
     </div>
+    @endif
 
 @endsection
 

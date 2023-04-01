@@ -209,6 +209,13 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::get('/clients/{clients}/edit', 'App\Http\Controllers\ClientController@edit')->name('clients.edit');
 
 
+    Route::get('/subsidiaries', 'App\Http\Controllers\SubsidiaryController@index')->name('subsidiary.index');
+    Route::get('/subsidiaries/create', 'App\Http\Controllers\SubsidiaryController@create')->name('subsidiary.create');
+    Route::post('/subsidiaries', 'App\Http\Controllers\SubsidiaryController@store')->name('subsidiary.store');
+    Route::put('/subsidiaries/{subsidiary}', 'App\Http\Controllers\SubsidiaryController@update')->name('subsidiary.update');
+    Route::delete('/subsidiaries/{subsidiary}', 'App\Http\Controllers\SubsidiaryController@destroy')->name('subsidiary.destroy');
+    Route::get('/subsidiaries/{subsidiary}/edit', 'App\Http\Controllers\SubsidiaryController@edit')->name('subsidiary.edit');
+
     //job categories
 
     Route::get('/job-category', 'App\Http\Controllers\JobCategoryController@index')->name('jobcategory.index');
