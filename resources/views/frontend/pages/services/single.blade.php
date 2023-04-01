@@ -39,75 +39,80 @@
 
 @section('content')
 
-    <div class="page__banner" data-background="{{asset('assets/frontend/img/pages/page-banner.jpg')}}">
-        <div class="container">
+
+    <div class="sc-breadcrumb-style sc-pt-135 sc-pb-110">
+        <div class="container position-relative">
             <div class="row">
-                <div class="col-xl-12">
-                    <div class="page__banner-content">
-                        <span>Service</span>
-                        <ul>
-                            <li><a href="/">Home</a><span>|</span></li>
-                            <li>{{ucwords(@$singleService->title)}}</li>
-                        </ul>
-                        <h1>Service Detail</h1>
+                <div class="col-lg-12">
+                    <div class="sc-slider-content p-z-idex">
+                        <div class="sc-slider-subtitle">Home - Our Services</div>
+                        <h1 class="slider-title white-color sc-mb-25 sc-sm-mb-15">Service Details</h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="services__details section-padding">
+    <div class="sc-blog-section-area sc-blog-section-two sc-pt-100 sc-md-pt-80 sc-pb-170 sc-md-pb-150">
         <div class="container">
             <div class="row">
-                <div class="col-xl-8 col-lg-8 lg-mb-60">
-                    <div class="services__details-left">
-                        <div class="services__details-left-image dark__image">
-                            <img src="{{asset('/images/service/'.@$singleService->banner_image)}}" alt="">
-                        </div>
-                        <div class="services__details-left-content">
-                            <h2>{{ucwords(@$singleService->title)}}</h2>
-                            <div class="content-area">
-                                {!! @$singleService->description !!}
-                            </div>
-                            <div class="row mt-45 mb-60">
-                                <div class="col-md-4">
-                                    <div class="news__details-left-share">
-                                        <h6>Share:</h6>
-                                        <ul>
-                                            <li>
-                                                <a href="#"><i class="fab fa-facebook-f" onclick='fbShare("{{route('service.single',$singleService->slug)}}")'></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="fab fa-twitter"  onclick='twitShare("{{route('service.single',$singleService->slug)}}","{{ $singleService->title }}")'></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="fab fa-whatsapp" onclick='whatsappShare("{{route('service.single',$singleService->slug)}}","{{ $singleService->title }}")'></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                <div class="col-lg-8">
+                    <div class="sc-blog-details-content-area">
+                        <div class="sc-blog-item sc-mb-30">
+                            <img src="{{asset('/images/service/'.@$singleService->banner_image)}}" alt="Blog" />
+                            <div class="sc-blog-date-box">
+                                <div class="sc-date-box">
+                                    <h4 class="title">{{date('d', strtotime($singleService->created_at))}}</h4>
+                                    <span class="sub-title">{{date('M', strtotime($singleService->created_at))}}</span>
                                 </div>
+                            </div>
+                            <h2 class="detail-title sc-pt-40 sc-mb-20">{{ucwords(@$singleService->title)}}</h2>
+                            <div class="des sc-mb-25 sc-details-check-text custom-description">
+                                {!! $singleService->description !!}
+                            </div>
+                        </div>
+                        <div class="sc-detaile-tags-list d-flex align-items-center justify-content-between">
+                            <div class="sc-detail-social">
+                                <ul class="list-gap">
+                                    <li>
+                                        <a href="#"><i class="icon-facebook"  onclick='fbShare("{{route('service.single',$singleService->slug)}}")'></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon-twiter"  onclick='twitShare("{{route('service.single',$singleService->slug)}}","{{ $singleService->title }}")'></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fab fa-whatsapp"  onclick='whatsappShare("{{route('service.single',$singleService->slug)}}","{{ $singleService->title }}")'></i></a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-4">
+                <div class="col-lg-4">
                     @include('frontend.pages.services.sidebar')
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
 @section('js')
 <script>
-function fbShare(url) {
-  window.open("https://www.facebook.com/sharer/sharer.php?u=" + url, "_blank", "toolbar=no, scrollbars=yes, resizable=yes, top=200, left=500, width=600, height=400");
-}
-function twitShare(url, title) {
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(title) + "+" + url + "", "_blank", "toolbar=no, scrollbars=yes, resizable=yes, top=200, left=500, width=600, height=400");
-}
-function whatsappShare(url, title) {
-    message = title + " " + url;
-    window.open("https://api.whatsapp.com/send?text=" + message);
-}
+    function fbShare(url) {
+      window.open("https://www.facebook.com/sharer/sharer.php?u=" + url, "_blank", "toolbar=no, scrollbars=yes, resizable=yes, top=200, left=500, width=600, height=400");
+    }
+    function twitShare(url, title) {
+        window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(title) + "+" + url + "", "_blank", "toolbar=no, scrollbars=yes, resizable=yes, top=200, left=500, width=600, height=400");
+    }
+    function whatsappShare(url, title) {
+        message = title + " " + url;
+        window.open("https://api.whatsapp.com/send?text=" + message);
+    }
+    $( document ).ready(function() {
+        let selector = $('.custom-description').find('table').length;
+        if(selector>0){
+            $('.custom-description').find('table').addClass('table table-bordered');
+        }
+    });
 </script>
 @endsection

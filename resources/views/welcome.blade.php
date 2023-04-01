@@ -430,11 +430,11 @@
                         @foreach(@$latestServices as $index=>$service)
                             <div class="swiper-slide">
                                 <div class="sc-project-item">
-                                    <a href="project-details.html"></a>
+                                    <a href="{{route('service.single',$service->slug)}}"></a>
                                     <img src="{{asset('/images/service/thumb/thumb_'.@$service->banner_image)}}" alt="Image" />
                                     <div class="sc-project-content-box">
                                         <div class="sc-project-icon">
-                                            <a href="#"><i class="icon-sliuder-arrow2"></i></a>
+                                            <a href="{{route('service.single',$service->slug)}}"><i class="icon-sliuder-arrow2"></i></a>
                                         </div>
                                         <div class="sc-project-text">
                                             <span class="sub-title">Omama Consulting</span>

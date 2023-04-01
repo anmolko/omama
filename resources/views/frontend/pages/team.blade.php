@@ -9,77 +9,87 @@
 @endsection
 @section('content')
 
-    <!-- Page Banner Start -->
-    <section class="page-banner-area pt-245 rpt-150 pb-170 rpb-100 rel z-1 bgc-lighter text-center">
-        <div class="container">
-            <div class="banner-inner rpt-10">
-                <nav aria-label="breadcrumb">
-{{--                    <h1 class="page-title">Our Team</h1>--}}
-                    <ol class="breadcrumb justify-content-center wow fadeInUp delay-0-4s">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">Teams</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <div class="banner-shapes">
-            <div class="circle wow zoomInLeft delay-0-2s" data-wow-duration="2s"></div>
-            <img class="shape-one" src="{{asset('assets/frontend/images/shapes/hero-shape1.png')}}" alt="Shape">
-            <img class="shape-two" src="{{asset('assets/frontend/images/shapes/hero-shape2.png')}}" alt="Shape">
-        </div>
-    </section>
-    <!-- Page Banner End -->
-
-
-    <!-- Team Area start -->
-    <section class="team-page-area pb-65 pt-80 rel z-1">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-7">
-                    <div class="section-title text-center mb-50 wow fadeInUp delay-0-2s">
-                        <span class="sub-title style-two mb-15">Our Amazing Team</span>
-                        <h2>We Have Well Experience Team Member</h2>
+    <div class="sc-breadcrumb-style sc-pt-135 sc-pb-110">
+        <div class="container position-relative">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sc-slider-content p-z-idex">
+                        <div class="sc-slider-subtitle">Home - Teams</div>
+                        <h1 class="slider-title white-color sc-mb-25 sc-sm-mb-15">Our Teams</h1>
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                @if(count($teams) > 0)
+        </div>
+    </div>
+
+    <div class="sc-team-pages-area sc-pt-100 sc-md-pt-75 sc-pb-160 sc-md-pb-90">
+        <div class="container">
+            @if(count($teams) > 0)
+                @php $i=2; @endphp
+                <div class="row">
                     @foreach($teams as $team)
-                        <div class="col-xl-3 col-lg-4 col-md-6 item ">
-                            <div class="team-member">
-                                <div class="image">
-                                    <img src="<?php if(!empty($team->image)){ echo '/images/teams/'.$team->image; } else{  echo 'assets/backend/images/users/user-dummy-img.jpg'; } ?>" alt="{{ucfirst(@$team->name)}}">
-                                </div>
-                                    <div class="content">
-                                        <h5><a href="team-profile.html">{{ucfirst(@$team->name)}}</a></h5>
-                                        <span class="designation">{{ucfirst(@$team->post)}}</span>
-                                            <div class="social-style-one">
+                        <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="{{ ($i+1)*100}}">
+                            <div class="sc-team-item text-center">
+                                <div class="item-img">
+                                    <div class="team-image">
+                                        <a
+                                        ><img src="{{ ($team->image!==null) ? asset('/images/teams/'.$team->image ):asset('assets/backend/images/users/user-dummy-img.jpg')}}" alt="Team"
+                                            /></a>
+                                    </div>
+                                    @if(!empty(@$team->fb) || !empty(@$team->twitter) || !empty(@$team->linkedin) || !empty(@$team->insta))
+                                        <ul class="team-social-1 list-gap">
+                                        <li class="social-item">
+                                            <a href="#" class="social-hover-icon social-link"
+                                            ><i class="icon-share"></i
+                                                ></a>
+                                                <ul class="list-gap team-social-dropdown">
                                                 @if(!empty(@$team->fb))
-                                                    <a href="{{@$team->fb}}"><i class="fab fa-facebook-f"></i></a>
+                                                    <li class="social-item social-item1">
+                                                        <a href="{{@$team->fb}}" target="{{@$team->fb ? '_blank':''}}" class="social-link">
+                                                            <i class="icon-facebook-2"></i>
+                                                        </a>
+                                                    </li>
                                                 @endif
                                                 @if(!empty(@$team->twitter))
-                                                    <a href="{{@$team->twitter}}"><i class="fab fa-twitter"></i></a>
+                                                        <li class="social-item social-item1">
+                                                            <a href="{{@$team->twitter}}" target="{{@$team->twitter ? '_blank':''}}" class="social-link">
+                                                                <i class="icon-twiter"></i>
+                                                            </a>
+                                                        </li>
                                                 @endif
                                                 @if(!empty(@$team->linkedin))
-                                                    <a href="{{@$team->linkedin}}"><i class="fab fa-linkedin-in"></i></a>
+                                                        <li class="social-item social-item1">
+                                                            <a href="{{@$team->linkedin}}" target="{{@$team->linkedin ? '_blank':''}}" class="social-link">
+                                                                <i class="icon-linkedin-2"></i>
+                                                            </a>
+                                                        </li>
                                                 @endif
                                                 @if(!empty(@$team->insta))
-                                                <a href="{{@$team->insta}}"><i class="fab fa-instagram"></i></a>
+                                                        <li class="social-item social-item1">
+                                                            <a href="{{@$team->insta}}" target="{{@$team->insta ? '_blank':''}}" class="social-link">
+                                                                <i class="icon-intragram"></i>
+                                                            </a>
+                                                        </li>
                                                 @endif
-                                            </div>
+                                            </ul>
+
+                                        </li>
+                                    </ul>
+                                    @endif
+                                    <div class="sc-team-content">
+                                        <h4><a class="title">{{ucfirst(@$team->name)}}</a></h4>
+                                        <span>{{ucfirst(@$team->post)}}</span>
                                     </div>
-
+                                </div>
                             </div>
+
                         </div>
+                        @php $i++ @endphp
                     @endforeach
-                @endif
-
-            </div>
+                </div>
+            @endif
         </div>
-    </section>
-    <!-- Team Area end -->
-
-
+    </div>
 @endsection
 @section('js')
 @endsection

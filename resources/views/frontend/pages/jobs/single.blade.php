@@ -99,6 +99,23 @@
                                 <div class="des sc-mb-25 sc-details-check-text custom-description">
                                     {!! $singleJob->description !!}
                                 </div>
+                                <div class="sc-blog-details-content-area">
+                                    <div class="sc-detaile-tags-list d-flex align-items-center justify-content-between">
+                                    <div class="sc-detail-social">
+                                        <ul class="list-gap">
+                                            <li>
+                                                <a href="#"><i class="icon-facebook" onclick='fbShare("{{route('job.single',$singleJob->slug)}}")'></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="icon-twiter"  onclick='twitShare("{{route('job.single',$singleJob->slug)}}","{{ $singleJob->title }}")'></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fab fa-whatsapp" onclick='whatsappShare("{{route('job.single',$singleJob->slug)}}","{{ $singleJob->title }}")'></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>
