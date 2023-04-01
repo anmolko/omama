@@ -206,6 +206,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
+                            @if(@$homepage_info->welcome_side_image == "left")
+
                             <div class="sc-about-group-image">
                                 <img
                                     src="{{ @$homepage_info->welcome_image ? asset('/images/home/welcome/'.@$homepage_info->welcome_image):''}}"
@@ -231,10 +233,33 @@
                                     </div>
                                 @endif
                             </div>
+                            @else
 
+                                <div class="sc-about-content-style sc-md-pt-95">
+                                    <div class="sc-heading-area sc-mb-25">
+                                        <span class="sub-title"><i class="icon-line"></i> {{$homepage_info->welcome_subheading ?? ''}}</span>
+                                        <h2 class="title">
+                                            {{$homepage_info->welcome_heading ?? ''}}
+                                            {{--                                    <span class="primary-color italic">improve</span> Drastically--}}
+                                        </h2>
+                                        <p class="description">
+                                            {{ ucfirst(@$homepage_info->welcome_description) }}
+                                        </p>
+                                    </div>
+                                    @if(@$homepage_info->welcome_button)
+                                        <div class="slider-btn-area sc-ab-area d-flex align-items-center">
+                                            <div class="sc-slider-btn sc-mr-20">
+                                                <a class="sc-primary-btn" href="{{@$homepage_info->welcome_link}}">{{@$homepage_info->welcome_button??'Learn More'}}</a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+
+                            @endif
                         </div>
                         <div class="col-lg-6" data-sal="slide-left" data-sal-duration="800">
-                            <div class="sc-about-content-style sc-pl-40 sc-lg-pl-70 sc-md-pl-0 sc-md-pt-95">
+                            @if(@$homepage_info->welcome_side_image == "left")
+                                <div class="sc-about-content-style sc-pl-40 sc-lg-pl-70 sc-md-pl-0 sc-md-pt-95">
                                 <div class="sc-heading-area sc-mb-25">
                                     <span class="sub-title"><i class="icon-line"></i> {{$homepage_info->welcome_subheading ?? ''}}</span>
                                     <h2 class="title">
@@ -253,6 +278,33 @@
                                 </div>
                                 @endif
                             </div>
+                            @else
+                                <div class="sc-about-group-image sc-pl-40 sc-lg-pl-70 sc-md-pl-0 ">
+                                    <img
+                                        src="{{ @$homepage_info->welcome_image ? asset('/images/home/welcome/'.@$homepage_info->welcome_image):''}}"
+                                        alt="About"
+                                        data-sal="slide-right"
+                                        data-sal-duration="800"
+                                        data-sal-delay="300"
+                                    />
+                                    @if(@$homepage_info->welcome_video_link)
+                                        <div class="video-area video-center d-flex align-items-center "  data-sal="slide-right"
+                                             data-sal-duration="800"
+                                             data-sal-delay="300">
+                                            <div class="sc-video-btn sc-mr-15">
+                                                <a
+                                                    class="popup-videos-button"
+                                                    data-autoplay="true"
+                                                    data-vbtype="video"
+                                                    href="{{@$homepage_info->welcome_video_link}}"
+                                                >
+                                                    <i class="icon-play_video"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -464,9 +516,9 @@
                         </div>
                         <div class="sc-process-content-area">
                             <div class="row">
-                                @php $i=2; @endphp
+
                                 @foreach(@$recruitments as $index=>$recruitment)
-                                    <div class="col-lg-3 col-md-6 sal-animate mt-4" data-sal="slide-up" data-sal-duration="800" data-sal-delay="{{ ($i+1)*100}}">
+                                    <div class="col-lg-3 col-md-6 sal-animate mt-4" data-sal="slide-up" data-sal-duration="800" data-sal-delay="{{($index+3)*100 }}">
                                         <div class="sc-business-item text-center sc-md-mb-35">
                                             <div class="sc-icon">
                                                 <span>{{$index+1}}</span>
@@ -485,7 +537,6 @@
                                             @endif
                                         </div>
                                     </div>
-                                    @php $i++ @endphp
                                 @endforeach
 
                             </div>

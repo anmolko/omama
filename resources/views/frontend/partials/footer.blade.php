@@ -1,36 +1,13 @@
 <!--=========== Footer Section Start =========-->
 <section class="sc-footer-section sc-footer-style2 sc-pt-120 footer-bg-image2 sc-md-pt-170">
     <div class="container">
-        <!--=========== cta Section Start =========-->
-        <div class="sc-cta-section-area">
-            <div class="sc-footer-cta sc-cta-content-box d-flex align-items-center">
-                <div class="sc-cta-image">
-                    <img src="{{asset('assets/frontend/images/about/cta.jpg')}}" alt="Business" />
-                </div>
-                <div class="sc-cta-content rounded-0 d-flex align-items-center justify-content-between">
-                    <div
-                        class="sc-cta-text m-0"
-                        data-sal="slide-up"
-                        data-sal-duration="800"
-                        data-sal-delay="300"
-                    >
-                        <h2 class="title white-color">Grow Your Business</h2>
-                        <p class="des white-color">With our services, we can help your business grow faster</p>
-                    </div>
-                    <div class="sc-cta-btn" data-sal="slide-up" data-sal-duration="800" data-sal-delay="400">
-                        <a class="sc-secondary-btn" href="{{route('contact')}}">Let's Work Together</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--=========== cta Section End =========-->
+
         <div class="row sc-pt-80 sc-pb-80 sc-md-pb-70">
             <div
                 class="col-xl-3 col-md-6 col-sm-12"
                 data-sal="slide-up"
                 data-sal-duration="500"
-                data-sal-delay="300"
-            >
+                data-sal-delay="300">
                 <div class="footer-about">
                     <div class="footer-logo sc-mb-30">
                         <a href="#"><img src="{{ (@$setting_data->logo_white) ? asset('/images/settings/'.@$setting_data->logo_white): asset('/images/settings/'.@$setting_data->logo) }}" /></a>

@@ -40,18 +40,13 @@
 
 @endsection
 @section('content')
-
-    <div class="page__banner" data-background="{{asset('assets/frontend/img/pages/page-banner.jpg')}}">
-        <div class="container">
+    <div class="sc-breadcrumb-style sc-pt-135 sc-pb-110">
+        <div class="container position-relative">
             <div class="row">
-                <div class="col-xl-12">
-                    <div class="page__banner-content">
-                        <span>Page</span>
-                        <ul>
-                            <li><a href="/">Home</a><span>|</span></li>
-                            <li>{{ucwords(@$page_detail->name)}}<</li>
-                        </ul>
-                        <h1>{{ucwords(@$page_detail->name)}}</h1>
+                <div class="col-lg-12">
+                    <div class="sc-slider-content p-z-idex">
+                        <div class="sc-slider-subtitle">Home - Page</div>
+                        <h1 class="slider-title white-color sc-mb-25 sc-sm-mb-15">{{ucwords(@$page_detail->name)}}</h1>
                     </div>
                 </div>
             </div>
@@ -61,80 +56,55 @@
     @foreach($sections as $key=>$value)
 
         @if($value == "basic_section")
-            <div class="about__one dark__image section-padding-4 ">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-6 col-lg-6 lg-mb-30">
-                            @if(@$basic_elements->list_image == "left")
-                                <div class="about__one-left">
-                                    <div class="about__one-left-image">
-                                        <img class="two" src="{{asset('/images/section_elements/basic_section/'.@$basic_elements->image) }}" alt="">
-                                    </div>
-                                </div>
-                            @else
-                                <div class="about__one-right">
-                                    <div class="about__one-right-title">
-                                        <span class="subtitle-one">{{$basic_elements->subheading??'Know more'}}</span>
-                                        <h2 style="max-width: 550px;"> {{ucwords(@$basic_elements->heading)}}</h2>
-                                        <p style="max-width: 550px;">  {!! @$basic_elements->description !!}</p>
-                                    </div>
-                                    @if(@$basic_elements->button_link)
-                                        <div class="about__one-right-btn">
-                                            <div>
-                                                <a class="btn-one" href="{{@$basic_elements->button_link}}">{{ucwords(@$basic_elements->button ?? 'Discover More')}}<i class="far fa-chevron-double-right"></i></a>
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
-                            @endif
-
-
+            <div class="sc-about-area sc-about-section-two position-relative sc-pb-10">
+                <div class="container-fluid sc-pl-0 sc-md-pr-20 sc-md-pl-20">
+                    <div class="sc-about-content-area sc-pt-40 sc-pb-40 position-relative p-z-idex d-flex align-items-center sc-md-pt-80 sc-md-pb-80">
+                        <div class="sc-about-bg-image" data-sal="slide-right" data-sal-duration="800">
+                            <img src="{{asset('/images/section_elements/basic_section/'.@$basic_elements->image) }}" alt="About" />
                         </div>
-                        <div class="col-xl-6 col-lg-6">
-                            @if(@$basic_elements->list_image == "left")
-                                <div class="about__one-right-title ml-10">
-                                    <span class="subtitle-one">{{$basic_elements->subheading??'Know more'}}</span>
-                                    <h2 style="max-width: 550px;"> {{ucwords(@$basic_elements->heading)}}</h2>
-                                    <p style="max-width: 550px;">  {!! @$basic_elements->description !!}</p>
+                        <div class="sc-about-text-box sc-md-mt-50 sc-pl-30 sc-md-pl-0" data-sal="slide-left" data-sal-duration="800">
+                            <div class="sc-heading-area sc-mb-35">
+                                <span class="sub-title"><i class="icon-line"></i> {{$basic_elements->subheading??'Omama Manpower'}}</span>
+                                <h2 class="title">
+                                    {{ucwords(@$basic_elements->heading)}}
+                                </h2>
+                                <div class="des">
+                                    {!! @$basic_elements->description !!}
                                 </div>
                                 @if(@$basic_elements->button_link)
-                                    <div class="about__one-right-btn">
-                                        <div>
-                                            <a class="btn-one" href="{{@$basic_elements->button_link}}">{{ucwords(@$basic_elements->button ?? 'Discover More')}}<i class="far fa-chevron-double-right"></i></a>
+                                    <div class="slider-btn-area sc-ab-area mt-3 d-flex align-items-center">
+                                        <div class="sc-slider-btn sc-mr-20">
+                                            <a class="sc-primary-btn" href="{{@$basic_elements->button_link}}">{{ucwords(@$basic_elements->button ?? 'Discover More')}}</a>
                                         </div>
                                     </div>
                                 @endif
-                            @else
-                                <div class="about__one-left">
-                                    <div class="about__one-left-image">
-                                        <img class="two" src="{{asset('/images/section_elements/basic_section/'.@$basic_elements->image) }}" alt="">
-                                    </div>
-                                </div>
-                            @endif
+                            </div>
+                            <div class="sc-about-shape">
+                                <img src="{{asset('assets/frontend/images/icons/about-shape.png')}}" alt="Shape" />
+                            </div>
                         </div>
-
                     </div>
                 </div>
-                <img class="about__one-shape-1 dark-n" src="{{asset('assets/frontend/img/shape/about-1.png')}}" alt="">
-                <img class="about__one-shape-1 light-n" src="{{asset('assets/frontend/img/shape/about-1-dark.png')}}" alt="">
-                <img class="about__one-shape-2 dark-n" src="{{asset('assets/frontend/img/shape/about-2.png')}}" alt="">
-                <img class="about__one-shape-2 light-n" src="{{asset('assets/frontend/img/shape/about-2-dark.png')}}" alt="">
             </div>
         @endif
 
         @if($value == "call_to_action_1")
-            <div class="about__solution mt-5" data-background="{{asset('assets/frontend/img/about/about-solution.jpg')}}" style="background-image: url('{{asset('assets/frontend/img/about/about-solution.jpg')}}');">
+            <div class="sc-cta-style-four">
                 <div class="container">
                     <div class="row align-items-center">
-                        <div class="col-xl-8">
-                            <div class="about__solution-left xl-t-center">
-                                <h2>{{ucfirst(@$call1_elements->heading)}}</h2>
+                        <div class="col-lg-9" data-sal="slide-right" data-sal-duration="800">
+                            <div class="sc-cta-text m-0">
+                                <h2 class="title white-color">{{ucfirst(@$call1_elements->heading)}}</h2>
+                                <p class="des white-color">{{ucfirst(@$call1_elements->subheading)}}</p>
                             </div>
                         </div>
-                        <div class="col-xl-4">
-                            <div class="about__solution-right t-right xl-t-center">
-                                <a class="btn-one" href="{{@$call1_elements->button_link ?? '/contact-us'}}">{{ucwords(@$call1_elements->button ?? 'Get Free Consultations')}} <i class="far fa-chevron-double-right"></i></a>
-                                <img class="about__solution-right-shape left-right-animate" src="{{asset('assets/frontend/img/shape/about-solution.png')}}" alt="">
+                        <div class="col-lg-3" data-sal="slide-left" data-sal-duration="800">
+                            <div class="sc-footer-cta-four">
+                                <div class="sc-cta-content sc-content-input d-flex align-items-center justify-content-between">
+                                    <div class="sc-cta-btn">
+                                        <a class="sc-secondary-btn-two sc-cta-estimate" href="{{@$call1_elements->button_link ?? '/contact-us'}}">{{ucwords(@$call1_elements->button ?? 'Get Free Consultations')}} </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -143,76 +113,61 @@
         @endif
 
         @if($value == "background_image_section")
-          <!--- Background Image--->
-          <div class="cta__two" data-background="{{ @$bgimage_elements->image ? asset('/images/section_elements/bgimage_section/'.@$bgimage_elements->image):asset('assets/frontend//img/pages/getInTouchThree.jpg')}}">
-              <img class="cta__two-shape left-right-animate2" src="{{asset('assets/frontend/img/shape/getInTouch.png')}}" alt="">
-              <div class="container">
-                  <div class="row align-items-center">
-                      <div class="col-xl-6 col-lg-5 lg-mb-30">
-                          <div class="cta__two-title">
-                              <span class="subtitle-one">{{@$bgimage_elements->subheading ?? 'Need Help?'}}</span>
-                              <h2>{{@$bgimage_elements->heading ?? 'Have Questions? Lets Connect'}}</h2>
-                          </div>
-                      </div>
-                      <div class="col-xl-6 col-lg-7">
-                          <div class="cta__two-info">
-                              <div class="cta__two-info-item">
-                                  <div class="cta__two-info-item-icon">
-                                      <i class="fal fa-phone-alt icon-animation"></i>
-                                  </div>
-                                  <div>
-                                      <span>Reach out</span>
-                                      <h6><a href="tel:{{@$setting_data->phone ??''}}">{{@$setting_data->phone ??''}}</a></h6>
-                                  </div>
-                              </div>
-                              <div class="cta__two-info-item">
-                                  <div class="cta__two-info-item-icon">
-                                      <i class="fal fa-envelope"></i>
-                                  </div>
-                                  <div>
-                                      <span>Mail us</span>
-                                      <h6><a href="mailto:{{@$setting_data->email ??''}}">{{@$setting_data->email ??''}}</a></h6>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+            <div class="sc-process-section-area sc-pt-110 sc-md-pt-80 sc-process-style-three position-relative">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 sc-pb-75">
+                            <div class="sc-heading-area sc-mb-35 sc-md-mb-50">
+                                <span class="sub-title"><i class="icon-line"></i>{{@$bgimage_elements->subheading ?? ''}}</span>
+                                <h2 class="title">{{@$bgimage_elements->heading ?? 'Delivering Solutions that Result in Happy Customers'}}</h2>
+                            </div>
+                            <div class="sc-process-content-area sc-mb-45 ">
+                                <div class="row">
+                                    <div class="col-md-12" data-sal="slide-up" data-sal-duration="800" data-sal-delay="300">
+                                        <div class="des" style="font-size: 18px;text-align: justify;">
+                                            {{ @$bgimage_elements->description }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6"></div>
+                    </div>
+                </div>
+                <div class="sc-services-bg-right-three sc-lg-hide"
+                     style="background-image: url('{{asset('/images/section_elements/bgimage_section/'.@$bgimage_elements->image)}}')"></div>
+            </div>
+
         @endif
 
         @if($value == "flash_cards")
-            <div class="chooseUs__area section-padding-3">
+                <div class="sc-working-process-area sc-pt-100 sc-md-pt-80 sc-pb-40 sc-md-pb-40">
                 <div class="container">
-                    <div class="row align-items-center mb-70">
-                        <div class="col-xl-6 col-lg-7 lg-mb-20">
-                            <div class="chooseUs__area-title">
-                                <span class="subtitle-one">Why Choose Us</span>
-                                <h2>consultant's reputation is extremely important.</h2>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-5">
-                            <div class="chooseUs__area-right">
-
-                                <div class="chooseUs__area-right-shape">
-                                    <img class="left-right-animate dark-n" src="{{asset('assets/frontend/img/shape/choose-us.png')}}" alt="">
-                                    <img class="left-right-animate light-n" src="{{asset('assets/frontend/img/shape/choose-us-dark.png')}}" alt="">
-                                </div>
+                    <div class="row">
+                        <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+                            <div class="sc-heading-area sc-mb-55 sc-md-mb-35 text-center">
+                                <span class="sub-title"><i class="icon-line"></i> {{$flash_elements[0]->subheading}}</span>
+                                <h2 class="title">
+                                    {{$flash_elements[0]->heading}}
+                                </h2>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         @foreach(@$flash_elements as $index=>$flash_element)
-
-                            <div class="col-sm-4">
-                                <div class="chooseUs__area-item">
-                                    <div class="chooseUs__area-item-icon">
-                                        <img src="{{asset('assets/frontend/img/icon/'.get_icons(@$index))}}" alt="">
+                            <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="{{($index+3)*100 }}">
+                            <div class="sc-process-system-three text-center sc-sm-mb-50">
+                                <div class="process-icon sc-mb-35">
+                                    <i class="{{get_icons($index)}}"></i>
+                                </div>
+                                <div class="process-content">
+                                    <h4 class="process-title">{{ucwords(@$flash_element->list_header)}}</h4>
+                                    <div class="desc">
+                                        {{ucfirst(@$flash_element->list_description) }}
                                     </div>
-                                    <h4>{{ucwords(@$flash_element->list_header)}}</h4>
-                                    <p>{{ucfirst(@$flash_element->list_description) }}</p>
                                 </div>
                             </div>
+                        </div>
                         @endforeach
 
                     </div>
@@ -221,18 +176,24 @@
         @endif
 
         @if($value == "simple_header_and_description")
-            <div class="project__details section-padding-3 {{ @$header_descp_elements->heading ?  '':'pt-0'}}">
+            <div class="sc-blog-section-area sc-blog-section-two sc-pt-10 sc-md-pt-10 sc-pb-100 sc-md-pb-80">
                 <div class="container">
-                    @if(@$header_descp_elements->heading)
-                        <div class="portfolio__area-title t-center mb-5">
-                            <span class="{{@$header_descp_elements->subheading ? 'subtitle-one':''}}">{{@$header_descp_elements->subheading ?? ''}}</span>
-                            <h2>{{ucwords(@$header_descp_elements->heading)}}</h2>
-                        </div>
-                    @endif
                     <div class="row">
-                        <div class="col-xl-12">
-                            <div class="project__details-area">
-                                {!! @$header_descp_elements->description !!}
+                        @if(@$header_descp_elements->heading)
+                            <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 sc-pt-70 sc-md-pt-60 ">
+                                <div class="sc-heading-area sc-mb-35 text-center">
+                                    <span class="sub-title"><i class="icon-line"></i> {{@$header_descp_elements->subheading ?? ''}}</span>
+                                    <h2 class="title">
+                                        {{ucwords(@$header_descp_elements->heading)}}
+                                    </h2>
+                                </div>
+                            </div>
+                        @endif
+                        <div class="col-lg-12">
+                            <div class="sc-blog-details-content-area">
+                                <div class="sc-details-develop-text custom-description">
+                                    {!! @$header_descp_elements->description !!}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -241,45 +202,38 @@
         @endif
 
         @if($value == "map_and_description")
-            <div class="contact__three section-padding-3" style="background: var(--color-6);">
+            <div class="section-shape">
+                <div class="sc-about-area sc-about-section-three position-relative sc-pt-120 sc-md-pt-100 sc-pb-140 sc-md-pb-90" style=" background: none;">
                 <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-6 col-lg-6 lg-mb-30">
-                            <div class="contact__three-right">
-                                <div class="contact__three-right-title">
-                                    <span class="subtitle-one">{{@$map_descp->subheading ?? ''}}</span>
-                                    <h2 class="mb-30">{{ucwords(@$map_descp->heading ?? '')}}</h2>
+                    <div class="row">
+                        <div class="col-lg-6" data-sal="slide-right" data-sal-duration="800">
+                            <div class="sc-about-content-style sc-md-mt-95 sc-pr-40 sc-md-pr-0">
+                                <div class="sc-heading-area sc-mb-25">
+                                    <span class="sub-title"><i class="icon-line"></i> {{@$map_descp->subheading ?? ''}}</span>
+                                    <h2 class="title">
+                                        {{ucwords(@$map_descp->heading ?? '')}}
+                                    </h2>
+                                    <div class="description" style="text-align: justify">
+                                        {!! ucfirst(@$map_descp->description) !!}
+                                    </div>
                                 </div>
-                                <div class="contact__three-right-form">
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="about__one-right-title">
-                                                    <p> {!! ucfirst(@$map_descp->description) !!}</p>
-                                                </div>
-                                                @if(@$map_descp->button)
-                                                    <div class="contact__two-right-form-item">
-                                                        <a href="{{@$map_descp->link}}" class="btn-one" type="submit">
-                                                            {{ucwords(@$map_descp->button)}} <i class="far fa-chevron-double-right"></i></a>
-                                                    </div>
-                                                @endif
-                                            </div>
+                                @if(@$map_descp->button_link)
+                                    <div class="slider-btn-area d-flex align-items-center">
+                                        <div class="sc-slider-btn sc-mr-20">
+                                            <a class="sc-primary-btn" href="{{@$map_descp->button_link}}">{{ucwords(@$map_descp->button)}}</a>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="contact__three-left mr-40 xl-mr-0">
-                                <div class="contact__three-left-map">
-                                    @if(@$setting_data->google_map)
-                                        <iframe src="{{@$setting_data->google_map}}" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                                    @endif
-                                </div>
-                            </div>
+                        <div class="col-lg-6" data-sal="slide-left" data-sal-duration="800">
+                            @if(@$setting_data->google_map)
+                                <iframe src="{{@$setting_data->google_map}}" style="border:0;width: 100%;height: 100%;" allowfullscreen="" loading="lazy"></iframe>
+                            @endif
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         @endif
 
@@ -436,5 +390,12 @@
 @endsection
 @section('js')
   <script src="{{asset('assets/frontend/js/lightbox.min.js')}}"></script>
-
+  <script>
+      $( document ).ready(function() {
+          let selector = $('.custom-description').find('table').length;
+          if(selector>0){
+              $('.custom-description').find('table').addClass('table table-bordered');
+          }
+      });
+  </script>
 @endsection
