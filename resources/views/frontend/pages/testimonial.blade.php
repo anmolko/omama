@@ -16,59 +16,56 @@
     </style>
 @endsection
 @section('content')
-
-    <!-- Page Banner Start -->
-    <section class="page-banner-area pt-245 rpt-150 pb-170 rpb-100 rel z-1 bgc-lighter text-center">
-        <div class="container">
-            <div class="banner-inner rpt-10">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center wow fadeInUp delay-0-4s">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">Client Testimonials</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <div class="banner-shapes">
-            <div class="circle wow zoomInLeft delay-0-2s" data-wow-duration="2s"></div>
-            <img class="shape-one" src="{{asset('assets/frontend/images/shapes/hero-shape1.png')}}" alt="Shape">
-            <img class="shape-two" src="{{asset('assets/frontend/images/shapes/hero-shape2.png')}}" alt="Shape">
-        </div>
-    </section>
-    <!-- Page Banner End -->
-
-    <!-- Blog List Area start -->
-    <section class="blog-list-area py-130 rel z-1">
-        <div class="container">
+    <div class="sc-breadcrumb-style sc-pt-135 sc-pb-110">
+        <div class="container position-relative">
             <div class="row">
-                @foreach($testimonials as $testimonial)
-                <div class="col-lg-6">
-                    <div class="blog-list-item wow fadeInUp delay-0-2s" style="height: 350px;">
-
-                        <div class="blog-content" style="align-items: start;">
-                            <div class="content" >
-                                <ul class="blog-meta">
-                                    <li>
-                                        <img src="{{asset('/images/testimonial/'.@$testimonial->image)}}" alt="Author" style="height: 90px; width: 90px">
-                                        <h5 style="padding-left: 12px; color:#46abe2;font-weight: lighter">{{ucwords($testimonial->name)}}</h5>
-                                    </li>
-                                    <li>
-
-                                        <h5 style="font-weight: lighter">{{ucwords($testimonial->position)}}</h5>
-                                    </li>
-                                </ul>
-                                <p class="justify-content">{!! @$testimonial->description !!}</p>
-                            </div>
-                        </div>
+                <div class="col-lg-12">
+                    <div class="sc-slider-content p-z-idex">
+                        <div class="sc-slider-subtitle">Home - Testimonial</div>
+                        <h1 class="slider-title white-color sc-mb-25 sc-sm-mb-15">Client Testimonials</h1>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sc-testimonial-section-three sc-pb-90" style="margin-top: 0px; padding-top:100px">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-8">
+                    <div class="sc-heading-area sc-mb-35 p-z-idex">
+                        <span class="sub-title"><i class="icon-line"></i> Our Testimonials</span>
+                        <h2 class="title">Happy Customer Feedback About Our Service</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach($testimonials as $testimonial)
+                    <div class="col-lg-4">
+                        <div class="sc-test-item" style="background: #ffffff;">
+                                <div class="sc-testimonial-text">
+                                    <a><img src="{{asset('assets/frontend/images/icons/quote.png')}}" alt="Blog" /></a>
+                                    <p class="des">
+                                        {{@$testimonial->description }}
+                                    </p>
+                                </div>
+                                <div class="sc-auother-text d-flex align-items-center">
+                                    <div class="sc-auother-image sc-mr-15">
+                                        <img src="{{asset('/images/testimonial/'.@$testimonial->image)}}" alt="Icon" />
+                                    </div>
+                                    <div class="sc-auother-header">
+                                        <h5>{{ucwords($testimonial->name)}}</h5>
+                                        <span class="sub-title">{{ucwords($testimonial->position)}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
                 @endforeach
             </div>
 
-            {{ $testimonials->links('vendor.pagination.default') }}
+            </div>
         </div>
-    </section>
-    <!-- Blog List Area end -->
+    </div>
 
 @endsection
 @section('js')

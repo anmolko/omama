@@ -3,30 +3,6 @@
 @section('css')
     <style>
 
-        .theme-btn.style-three, a.theme-btn.style-three.faq-button {
-            color: #293043 !important;
-            background: transparent;
-            border: 1px solid rgba(0, 102, 255, 0.2);
-        }
-      .custom-editor .media{
-            display: block;
-        }
-
-        .feature-item-three > img {
-            width:60px;
-            height:60px;
-            margin-top: 10px;
-            margin-right: 25px;
-        }
-        .custom-editor{
-            font-size: 1.1875rem;
-            text-align: justify;
-        }
-
-      .accordion-item {
-          margin-bottom: 30px;
-      }
-
      #gallery #image-gallery .img-wrapper {
           height: 270px;
       }
@@ -350,40 +326,44 @@
         @endif
 
         @if($value == "gallery_section")
-          <!--- Gallery Section 1-->
-          <div class="faq__area section-padding-3">
-              <div class="container">
-                  @if($heading!==null)
-                      <div class="row">
-                          <div class="col-xl-12">
-                              <div class="portfolio__area-title t-center">
-                                  <span class="subtitle-one">{{$subheading ?? ''}}</span>
-                                  <h2>{{$heading ?? ''}}</h2>
-                              </div>
-                          </div>
-                      </div>
-                  @endif
-                    <div id="gallery" style="">
-                        <div id="image-gallery">
-                          <div class="row">
-                              @foreach(@$gallery_elements as $gallery_element)
-
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 image">
-                                  <div class="img-wrapper">
-                                    <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}">
-                                      <img src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" class="img-responsive"></a>
-                                    <div class="img-overlay">
-                                      <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                    </div>
-                                  </div>
+            <div class="sc-working-process-area sc-pt-60 sc-md-pt-80 sc-pb-100 sc-md-pb-80">
+                <div class="container">
+                    @if($heading!==null)
+                        <div class="row">
+                            <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+                                <div class="sc-heading-area sc-mb-55 sc-md-mb-35 text-center">
+                                    <span class="sub-title"><i class="icon-line"></i> {{$subheading ?? ''}}</span>
+                                    <h2 class="title">
+                                        <?php
+                                        $split = explode(" ", @$heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$heading))."\n"}}
+                                        <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
+                                    </h2>
                                 </div>
-                              @endforeach
+                            </div>
+                        </div>
+                    @endif
+                    <div id="gallery" style="padding: 0px 30px 0 30px;">
+                            <div id="image-gallery">
+                                <div class="row">
+                                    @foreach(@$gallery_elements as $gallery_element)
 
-                          </div><!-- End row -->
-                        </div><!-- End image gallery -->
-                    </div><!-- End container -->
-              </div>
-          </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 image">
+                                            <div class="img-wrapper">
+                                                <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}">
+                                                    <img src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" class="img-responsive"></a>
+                                                <div class="img-overlay">
+                                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+
+                                </div><!-- End row -->
+                            </div><!-- End image gallery -->
+                        </div><!-- End container -->
+
+                </div>
+            </div>
         @endif
 
         @if($value == "slider_list")
@@ -400,7 +380,7 @@
                 </div>
             </div>
 
-            <div class="sc-project-section-area nagetive-margin sc-pb-100 sc-md-pb-80">
+            <div class="sc-project-section-area nagetive-margin sc-pb-60 sc-md-pb-80">
                 <div class="container">
                     <div class="swiper sc-pagination-active sc-swiper-slider">
                         <div class="swiper-wrapper">
