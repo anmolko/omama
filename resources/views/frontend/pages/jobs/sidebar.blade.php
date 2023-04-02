@@ -26,7 +26,7 @@
                     <div class="sc-auother-image sc-mr-20">
                         <a href="{{route('job.single',@$latest->slug)}}">
                             <img style="    width: 90px;height: 90px;"
-                                src="{{ ($latest->image !== null) ? asset('/images/job/thumb/thumb_'.@$latest->image): asset('assets/frontend/images/win.png')}}" />
+                                src="{{ ($latest->image !== null) ? asset('/images/job/thumb/thumb_'.@$latest->image): asset('assets/frontend/images/oamama_thumb.png')}}" />
                         </a>
                     </div>
                     <div class="auother-text">

@@ -46,7 +46,7 @@
                                     @endif
                                 </p>
                                 <div class="sc-service-button">
-                                    <img src="{{ ($job->image !== null) ? asset('/images/job/thumb/thumb_'.@$job->image): asset('assets/frontend/images/win.png')}}" alt="Service" />
+                                    <img src="{{ ($job->image !== null) ? asset('/images/job/thumb/thumb_'.@$job->image): asset('assets/frontend/images/oamama_thumb.png')}}" alt="Service" />
                                     <div class="service-btn">
                                         <a class="sc-service-btn" href="{{route('job.single',@$job->slug)}}"><i class="icon-sliuder-arrow2"></i></a>
                                     </div>
