@@ -9,7 +9,6 @@
                 <a href="{{route('contact')}}" class="sc-primary-btn">
                     Contact us</a>
                 </div>
-            </div>
         </div>
         <div class="row sc-pt-80 sc-pb-80 sc-md-pb-70">
             <div
