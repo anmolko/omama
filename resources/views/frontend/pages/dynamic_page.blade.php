@@ -147,7 +147,7 @@
         @endif
 
         @if($value == "flash_cards")
-                <div class="sc-working-process-area sc-pt-100 sc-md-pt-80 sc-pb-40 sc-md-pb-40">
+            <div class="sc-working-process-area sc-pt-100 sc-md-pt-80 sc-pb-100 sc-md-pb-80">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
@@ -214,115 +214,139 @@
         @if($value == "map_and_description")
             <div class="section-shape">
                 <div class="sc-about-area sc-about-section-three position-relative sc-pt-120 sc-md-pt-100 sc-pb-140 sc-md-pb-90" style=" background: none;">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6" data-sal="slide-right" data-sal-duration="800">
-                            <div class="sc-about-content-style sc-md-mt-95 sc-pr-40 sc-md-pr-0">
-                                <div class="sc-heading-area sc-mb-25">
-                                    <span class="sub-title"><i class="icon-line"></i> {{@$map_descp->subheading ?? ''}}</span>
-                                    <h2 class="title">
-                                        <?php
-                                        $split = explode(" ", @$map_descp->heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$map_descp->heading ))."\n"}}
-                                        <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
-                                    </h2>
-                                    <div class="description" style="text-align: justify">
-                                        {!! ucfirst(@$map_descp->description) !!}
-                                    </div>
-                                </div>
-                                @if(@$map_descp->button_link)
-                                    <div class="slider-btn-area d-flex align-items-center">
-                                        <div class="sc-slider-btn sc-mr-20">
-                                            <a class="sc-primary-btn" href="{{@$map_descp->button_link}}">{{ucwords(@$map_descp->button)}}</a>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6" data-sal="slide-right" data-sal-duration="800">
+                                <div class="sc-about-content-style sc-md-mt-95 sc-pr-40 sc-md-pr-0">
+                                    <div class="sc-heading-area sc-mb-25">
+                                        <span class="sub-title"><i class="icon-line"></i> {{@$map_descp->subheading ?? ''}}</span>
+                                        <h2 class="title">
+                                            <?php
+                                            $split = explode(" ", @$map_descp->heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$map_descp->heading ))."\n"}}
+                                            <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
+                                        </h2>
+                                        <div class="description" style="text-align: justify">
+                                            {!! ucfirst(@$map_descp->description) !!}
                                         </div>
                                     </div>
+                                    @if(@$map_descp->button_link)
+                                        <div class="slider-btn-area d-flex align-items-center">
+                                            <div class="sc-slider-btn sc-mr-20">
+                                                <a class="sc-primary-btn" href="{{@$map_descp->button_link}}">{{ucwords(@$map_descp->button)}}</a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-lg-6" data-sal="slide-left" data-sal-duration="800">
+                                @if(@$setting_data->google_map)
+                                    <iframe src="{{@$setting_data->google_map}}" style="border:0;width: 100%;height: 100%;" allowfullscreen="" loading="lazy"></iframe>
                                 @endif
                             </div>
-                        </div>
-                        <div class="col-lg-6" data-sal="slide-left" data-sal-duration="800">
-                            @if(@$setting_data->google_map)
-                                <iframe src="{{@$setting_data->google_map}}" style="border:0;width: 100%;height: 100%;" allowfullscreen="" loading="lazy"></iframe>
-                            @endif
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
         @endif
 
         @if($value == "accordion_section_2")
-            <div class="faq__area section-padding-3">
+            <div class="sc-accordion-section-area sc-accordion-style-two sc-pb-80">
                 <div class="container">
-                    <div class="row"><div class="row align-items-end mb-70">
-                            <div class="col-xl-7 col-lg-8 lg-mb-30">
-                                <div class="blog__one-title lg-t-center">
-                                    <span class="subtitle-one">{{ucwords(@$accordian2_elements[0]->subheading)}}</span>
-                                    <h2>
-                                        <?php
-                                        $split = explode(" ", @$accordian2_elements[0]->heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$accordian2_elements[0]->heading ))."\n"}}
-                                        <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6" data-sal="slide-right" data-sal-duration="800">
+                            <div class="sc-heading-area sc-mb-35">
+                                <span class="sub-title"><i class="icon-line"></i> {{ucwords(@$accordian2_elements[0]->subheading ?? 'Essential Query')}}</span>
+
+                                <h2 class="title">
+                                    <?php
+                                    $split = explode(" ", @$accordian2_elements[0]->heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$accordian2_elements[0]->heading ))."\n"}}
+                                    <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
+                                </h2>
+                            </div>
+                            <div class="accordion sc-faq-style" id="accordionExample">
+                                @foreach(@$accordian2_elements as $index=>$accordian2_element)
+
+                                    <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading{{$index}}">
+                                        <button
+                                            class="accordion-button"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#collapse{{$index}}"
+                                            aria-expanded="{{ $index==0 ? 'true':'false' }}"
+                                            aria-controls="collapse{{$index}}"
+                                        >
+                                            {{@$accordian2_element->list_header}}
+                                        </button>
                                     </h2>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-5 col-lg-4 t-right lg-t-center">
-                                @if(@$accordian2_elements[0]->button_link)
-                                    <a class="btn-two" href="{{@$accordian2_elements[0]->button_link}}">{{ucwords(@$accordian2_elements[0]->button ?? 'Reach Out')}}<i class="far fa-chevron-double-right"></i></a>
-                                @endif
-                            </div>
-                        </div>
-
-                        @foreach(@$accordian2_elements->chunk($list_2/2) as $index=>$accordian2_elements)
-                            <div class="col-xl-6">
-                                @foreach(@$accordian2_elements as $index2=>$accordian2_element)
-                                    <div class="faq-collapse">
-                                        <div class="faq-collapse-item mb-2">
-                                            <div class="faq-collapse-item-card">
-                                                <div class="faq-collapse-item-card-header">
-                                                    <h6><span class="far fa-question-circle"></span>{{@$accordian2_element->list_header}}-{{$index2}}</h6>
-                                                    <i class="far fa-minus"></i>
-                                                </div>
-                                                <div class="faq-collapse-item-card-header-content display-none {{ ($index2==0 ||$index2==4) ? 'active':''}}" style="display:{{ ($index2==0 || $index2==4) ? 'block':'none'}}">
-                                                    <p>{{@$accordian2_element->list_description}}</p>
-                                                </div>
-                                            </div>
+                                    <div
+                                        id="collapse{{$index}}"
+                                        class="accordion-collapse collapse {{$index==0 ? 'show':''}}"
+                                        aria-labelledby="heading{{$index}}"
+                                        data-bs-parent="#accordionExample"
+                                    >
+                                        <div class="accordion-body">
+                                            <strong
+                                            >{{@$accordian2_element->list_description}}</strong
+                                            >
                                         </div>
                                     </div>
-                                @endforeach
-                            </div>
-                        @endforeach
+                                </div>
 
+                                @endforeach
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="sc-essential-image sc-md-mt-40 text-end">
+                                <img src="{{ (@$accordian2_elements[0]->image !== null) ? asset('/images/section_elements/basic_section/'.@$accordian2_elements[0]->image):asset('assets/frontend/images/project/essential-bg.jpg')}}" alt="Essential" />
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div class="sc-essential-shape">
+                    <img src="{{asset('assets/frontend/images/bg/essential-shape1.png')}}" alt="Shape" />
                 </div>
             </div>
         @endif
 
         @if($value == "small_box_description")
-            <div class="solutions__two section-padding">
+            <div class="sc-service-section-two sc-pt-100 sc-md-pt-80 sc-pb-95 sc-md-pb-50" style="margin-top: 0px;">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-3 col-lg-6 lg-mb-30">
-                            <div class="solutions__two-title">
-                                <span class="subtitle-one">{{ ucfirst($process_elements[0]->subheading ?? 'Advance Solutions')}}</span>
-                                <h2>{{ ucfirst($process_elements[0]->heading ?? '')}}</h2>
-                                <p>{{ $process_elements[0]->description ?? ''}}</p>
-                            </div>
-                        </div>
+                        <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+                            <div class="sc-heading-area sc-mb-35 text-center">
+                                <span class="sub-title"><i class="icon-line"></i> {{ ucfirst($process_elements[0]->subheading ?? 'Advance Solutions')}}</span>
 
-                        @for ($i = 1; $i <=@$process_num; $i++)
-                            <div class="col-xl-3 col-md-6 xl-mb-30">
-                            <div class="solutions__two-item">
-                                <div class="solutions__two-item-icon">
-                                    <img src="{{asset('assets/frontend/img/icon/'.get_solution_icons($i-1))}}" alt="">
-                                </div>
-                                <h4>{{ucwords(@$process_elements[$i-1]->list_header ??'')}}</h4>
-                                <p>{{ucfirst(@$process_elements[$i-1]->list_description)}}</p>
+                                <h2 class="title">
+                                    <?php
+                                    $split = explode(" ", @$process_elements[0]->heading );?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$process_elements[0]->heading))."\n"}}
+                                    <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
+                                </h2>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        @for ($i = 1; $i <=@$process_num; $i++)
+                            <div class="col-lg-3 col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="{{ ($i+2) * 100 }}">
+                                <div class="sc-service-content-box">
+                                    <div class="sc-services-image">
+                                        <div class="sc-service-icon">
+                                            <i class="{{get_solution_icons($i-1)}}"></i>
+                                        </div>
+                                    </div>
+                                    <div class="sc-service-text">
+                                        <h4><a class="title">{{ucwords(@$process_elements[$i-1]->list_header ??'')}}</a></h4>
+                                        <p class="des sc-mb-25">
+                                            {{ucfirst(@$process_elements[$i-1]->list_description)}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         @endfor
                     </div>
                 </div>
             </div>
-          <!-- Feature Six Area end -->
         @endif
 
         @if($value == "gallery_section")

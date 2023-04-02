@@ -246,9 +246,9 @@
                                                     <option  {{($list2 == null) ? "disabled selected":"disabled"}}>Select Number of Tab List</option>
                                                     <option value="2" {{($list2 =="2") ? "selected":""}}>Two</option>
                                                     <option value="4" {{($list2 =="4") ? "selected":""}}>Four</option>
-                                                    <option value="6" {{($list2 =="6") ? "selected":""}}>Six</option>
-                                                    <option value="8" {{($list2 =="8") ? "selected":""}}>Eight</option>
-                                                    <option value="10" {{($list2 =="10") ? "selected":""}}>Ten</option>
+{{--                                                    <option value="6" {{($list2 =="6") ? "selected":""}}>Six</option>--}}
+{{--                                                    <option value="8" {{($list2 =="8") ? "selected":""}}>Eight</option>--}}
+{{--                                                    <option value="10" {{($list2 =="10") ? "selected":""}}>Ten</option>--}}
                                                 </select>
                                                 <input type="hidden" name="list_2_id" value="{{$list2_id}}">
                                                 <div class="invalid-feedback">
@@ -338,9 +338,20 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input type="hidden" value="3" class="form-control" name="list_number_3_process_sel" id="list_number_3_process_sel" readonly>
-                                            <input type="hidden" name="process_sel_id" value="{{$process_id}}">
-
+                                            <div class="form-group">
+                                                <label>Select number of Tab List <span class="text-muted text-danger">*</span></label>
+                                                <select class="form-control select" name="list_number_3_process_sel" id="list_number_3_process_sel">
+                                                    <option disabled>Select Number of Tab List</option>
+                                                    <option value="4" {{($process_number =="4") ? "selected":""}}>Four</option>
+                                                    <option value="8" {{($process_number =="8") ? "selected":""}}>Eight</option>
+                                                </select>
+                                                <input type="hidden" name="process_sel_id" value="{{$process_id}}">
+                                                <div class="invalid-feedback">
+                                                    Please select the number.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mt-3">
                                             <label class="image-checkbox {{(in_array('small_box_description', $sections) ? "image-checkbox-checked":"")}}">
                                                 <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/small_box_description.png')}}" width="100%"/>
                                                 <input type="checkbox" name="section[]" id="small_box_description.png" value="small_box_description" {{(in_array('small_box_description', $sections) ? "checked":"")}} />

@@ -667,7 +667,7 @@
                                              <div class="card ctm-border-radius shadow-sm flex-fill">
                                                  <div class="card-header">
                                                      <h4 class="card-title mb-0">
-                                                         Accordion Header Details
+                                                         Genera details
                                                      </h4>
                                                  </div>
                                                  <div class="card-body">
@@ -685,19 +685,19 @@
                                                              Please enter the sub heading.
                                                          </div>
                                                      </div>
-                                                     <div class="form-group mb-3">
-                                                         <label>Button Text </label>
-                                                         <input type="text" maxlength="15" class="form-control" value="{{@$accordian2_elements[0]->button}}" name="button[]">
-                                                         <div class="invalid-feedback">
-                                                             Please enter the button text.
+                                                     <div class="col-md-4">
+                                                         <img  id="current-faq-img"  src="<?php if(!empty(@$accordian2_elements[0]->image)){ echo '/images/section_elements/basic_section/'.@$accordian2_elements[0]->image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
+                                                         <input  type="file" accept="image/png, image/jpeg" hidden
+                                                                 id="faq-image" onchange="loadbasicFile('faq-image','current-faq-img',event)" name="image[]"
+                                                                 class="profile-foreground-img-file-input" >
+
+                                                         <figcaption class="figure-caption">Side image. (SIZE: 650 × 730px)</figcaption>
+                                                         <div class="invalid-feedback" >
+                                                             Please select a image.
                                                          </div>
-                                                     </div>
-                                                     <div class="form-group mb-3">
-                                                         <label>Button Link </label>
-                                                         <input type="text" class="form-control" value="{{@$accordian2_elements[0]->button_link}}" name="button_link[]">
-                                                         <div class="invalid-feedback">
-                                                             Please enter the button link.
-                                                         </div>
+                                                         <label for="faq-image" class="profile-photo-edit btn btn-light feature-image-button">
+                                                             <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
+                                                         </label>
                                                      </div>
                                                  </div>
                                              </div>
@@ -708,7 +708,6 @@
                                      <div class="accordion custom-accordionwithicon custom-accordion-border accordion-border-box accordion-success" id="accordionBordered5">
                                          <input type="hidden" class="form-control" value="{{@$accordian2_elements}}" name="accordion2_elements">
                                          @for ($i = 1; $i <=$list_2; $i++)
-
                                              <div class="accordion-item">
                                                  <h2 class="accordion-header" id="accordian-heading-{{$i}}">
                                                      <button class="accordion-button {{($i==1) ? '':'collapsed'}}" type="button" data-bs-toggle="collapse" data-bs-target="#accor_borderedExamplecollapse_{{$i}}" aria-expanded="{{($i==1) ? 'true':'false'}}" aria-controls="accor_borderedExamplecollapse_{{$i}}">
@@ -962,23 +961,16 @@
                                                     <div class="card-body">
                                                         <div class="form-group mb-3">
                                                             <label>Heading <span class="text-danger">*</span></label>
-                                                            <input type="text" class="form-control" maxlength="35" name="heading[]" value="{{@$process_elements[0]->heading}}" required>
+                                                            <input type="text" class="form-control" maxlength="45" name="heading[]" value="{{@$process_elements[0]->heading}}" required>
                                                             <div class="invalid-feedback">
                                                                 Please enter the heading.
                                                             </div>
                                                         </div>
                                                         <div class="form-group mb-3">
                                                             <label>SubHeading </label>
-                                                            <input type="text" class="form-control" maxlength="25" name="subheading[]" value="{{@$process_elements[0]->subheading}}">
+                                                            <input type="text" class="form-control" maxlength="35" name="subheading[]" value="{{@$process_elements[0]->subheading}}">
                                                             <div class="invalid-feedback">
                                                                 Please enter the heading.
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group mb-3">
-                                                            <label>Small Description<span class="text-muted text-danger">*</span></label>
-                                                            <textarea class="form-control" maxlength="160" rows="8" name="description[]" required>{{@$process_elements[0]->description}}</textarea>
-                                                            <div class="invalid-feedback">
-                                                                Please enter the small description.
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1006,14 +998,14 @@
                                                                             <input type="hidden" class="form-control" value="{{$value}}"  name="section_name" required>
                                                                             <input type="hidden" class="form-control" value="{{$process_num}}" name="list_number_3_process_num" required>
                                                                             <input type="hidden" class="form-control" value="{{@$process_elements[$i-1]->id}}" name="id[]">
-                                                                            <input type="text" class="form-control" name="list_header[]" maxlength="22" value="{{@$process_elements[$i-1]->list_header}}" >
+                                                                            <input type="text" class="form-control" name="list_header[]" maxlength="25" value="{{@$process_elements[$i-1]->list_header}}" >
                                                                             <div class="invalid-feedback">
                                                                                 Please enter the heading.
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group mb-3">
                                                                             <label>Description <span class="text-muted text-danger">*</span></label>
-                                                                            <textarea class="form-control" maxlength="190" rows="8" name="list_description[]" required>{{@$process_elements[$i-1]->list_description}}</textarea>
+                                                                            <textarea class="form-control" maxlength="300" rows="8" name="list_description[]" required>{{@$process_elements[$i-1]->list_description}}</textarea>
                                                                             <div class="invalid-feedback">
                                                                                 Please write the description.
                                                                             </div>

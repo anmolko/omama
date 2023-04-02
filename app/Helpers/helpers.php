@@ -199,11 +199,23 @@ if (!function_exists('get_solution_icons')) {
     function get_solution_icons($index){
         $icon   = '';
         if($index == 0){
-            $icon = 'solutions-1.png';
+            $icon = 'icon-bussness2';
         }else if($index == 1){
-            $icon = 'solutions-2.png';
+            $icon = 'icon-startup';
         }else if($index == 2){
-            $icon = 'solutions-3.png';
+            $icon = 'icon-research';
+        }else if($index == 3){
+            $icon = 'icon-risk';
+        }else if($index == 4){
+            $icon = 'icon-human';
+        }else if($index == 5){
+            $icon = 'icon-complete';
+        }else if($index == 6){
+            $icon = 'icon-artifical';
+        }else if($index == 7){
+            $icon = 'icon-happy';
+        }else{
+            $icon = 'icon-lifetime';
         }
 
         return $icon;

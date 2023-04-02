@@ -242,18 +242,27 @@ class SectionElementController extends Controller
                 for ($i=0;$i<$list2_num;$i++){
                     $heading     =  (array_key_exists($i, $request->input('heading')) ?  $request->input('heading')[$i]: Null);
                     $subheading  =  (array_key_exists($i, $request->input('subheading')) ?  $request->input('subheading')[$i]: Null);
-                    $button      =  (array_key_exists($i, $request->input('button')) ?  $request->input('button')[$i]: Null);
-                    $link        =  (array_key_exists($i, $request->input('button_link')) ?  $request->input('button_link')[$i]: Null);
                     $data=[
                         'heading'               => $heading,
                         'subheading'            => $subheading,
-                        'button'                => $button,
-                        'button_link'           => $link,
                         'page_section_id'       => $section_id,
                         'list_header'           => $request->input('list_header')[$i],
                         'list_description'      => $request->input('list_description')[$i],
                         'created_by'            => Auth::user()->id,
                     ];
+
+                    if($request->hasFile('image')){
+                        if (array_key_exists($i,$request->file('image'))) {
+                            $image = $request->file('image')[$i];
+                            $name = uniqid() . '_faq_' . $image->getClientOriginalName();
+                            $path = base_path() . '/public/images/section_elements/basic_section/';
+                            $moved = Image::make($image->getRealPath())->fit(650 ,730)->orientate()->save($path . $name);
+                            if ($moved) {
+                                $data['image']  = $name;
+                            }
+                        }
+                    }
+
                     $status = SectionElement::create($data);
                 }
         }
@@ -291,11 +300,9 @@ class SectionElementController extends Controller
             for ($i=0;$i<$process_num;$i++){
                 $heading     =  (array_key_exists($i, $request->input('heading')) ?  $request->input('heading')[$i]: Null);
                 $subheading  =  (array_key_exists($i, $request->input('subheading')) ?  $request->input('subheading')[$i]: Null);
-                $description  =  (array_key_exists($i, $request->input('description')) ?  $request->input('description')[$i]: Null);
                 $data=[
                     'heading'               => $heading,
                     'subheading'            => $subheading,
-                    'description'           => $description,
                     'list_header'           => $request->input('list_header')[$i],
                     'page_section_id'       => $section_id,
                     'list_description'      => $request->input('list_description')[$i],
@@ -469,7 +476,6 @@ class SectionElementController extends Controller
 
         }
         elseif ($section_name == 'accordion_section_2') {
-
             $list2_num       = $request->input('list_number_2');
             $db_elements     = json_decode($request->input('accordion2_elements'),true);
             $db_elements_id  = array_map(function($item){ return $item['id']; }, $db_elements);
@@ -477,14 +483,11 @@ class SectionElementController extends Controller
             for ($i=0;$i<$list2_num;$i++) {
                 $heading     =  (array_key_exists($i, $request->input('heading')) ?  $request->input('heading')[$i]: Null);
                 $subheading  =  (array_key_exists($i, $request->input('subheading')) ?  $request->input('subheading')[$i]: Null);
-                $button      =  (array_key_exists($i, $request->input('button')) ?  $request->input('button')[$i]: Null);
-                $link        =  (array_key_exists($i, $request->input('button_link')) ?  $request->input('button_link')[$i]: Null);
+
                 if($request->input('id')[$i] == null){
                     $data=[
                         'heading'               => $heading,
                         'subheading'            => $subheading,
-                        'button'                => $button,
-                        'button_link'           => $link,
                         'page_section_id'       => $section_id,
                         'list_header'           => $request->input('list_header')[$i],
                         'list_description'      => $request->input('list_description')[$i],
@@ -496,15 +499,33 @@ class SectionElementController extends Controller
                     $accordian2                      = SectionElement::find($request->input('id')[$i]);
                     $accordian2->heading             = $heading;
                     $accordian2->subheading          = $subheading;
-                    $accordian2->button              = $button;
-                    $accordian2->button_link         = $link;
                     $accordian2->page_section_id     = $section_id;
                     $accordian2->list_header         = $request->input('list_header')[$i];
                     $accordian2->list_description    = $request->input('list_description')[$i];
                     $accordian2->updated_by          = Auth::user()->id;
-                    $status                          = $accordian2->update();
+                    $oldimage                        = $accordian2->image;
+
+                    if($request->hasFile('image')){
+                        if (array_key_exists($i,$request->file('image'))) {
+                            $image = $request->file('image')[$i];
+                            $name = uniqid() . '_faq_' . $image->getClientOriginalName();
+                            $path = base_path() . '/public/images/section_elements/basic_section/';
+                            $moved = Image::make($image->getRealPath())->fit(650 ,730)->orientate()->save($path . $name);
+                            if ($moved) {
+                                $accordian2->image  = $name;
+                                if (!empty($oldimage) && file_exists(public_path() . '/images/section_elements/basic_section/' . $oldimage)) {
+                                    @unlink(public_path() . '/images/section_elements/basic_section/' . $oldimage);
+                                }
+                            }
+                        }
+                    }
+
+
+                    $status  = $accordian2->update();
                 }
             }
+
+
 
             foreach ($db_elements_id as $key=>$value){
                 if(!in_array($value,$request->input('id'))){
@@ -600,12 +621,10 @@ class SectionElementController extends Controller
             for ($i=0;$i<$process_num;$i++) {
                 $heading     =  (array_key_exists($i, $request->input('heading')) ?  $request->input('heading')[$i]: Null);
                 $subheading  =  (array_key_exists($i, $request->input('subheading')) ?  $request->input('subheading')[$i]: Null);
-                $description  =  (array_key_exists($i, $request->input('description')) ?  $request->input('description')[$i]: Null);
                 if($request->input('id')[$i] == null){
                     $data=[
                         'heading'               => $heading,
                         'subheading'            => $subheading,
-                        'description'           => $description,
                         'list_header'           => $request->input('list_header')[$i],
                         'page_section_id'       => $section_id,
                         'list_description'      => $request->input('list_description')[$i],
@@ -617,7 +636,6 @@ class SectionElementController extends Controller
                     $process                      = SectionElement::find($request->input('id')[$i]);
                     $process->heading             = $heading;
                     $process->subheading          = $subheading;
-                    $process->description         = $description;
                     $process->list_header         = $request->input('list_header')[$i];
                     $process->page_section_id     = $section_id;
                     $process->list_description    = $request->input('list_description')[$i];

@@ -260,9 +260,9 @@
                                                         <option disabled>Select Number of Tab List</option>
                                                         <option value="2" selected>Two</option>
                                                         <option value="4">Four</option>
-                                                        <option value="6">Six</option>
-                                                        <option value="8">Eight</option>
-                                                        <option value="10">Ten</option>
+{{--                                                        <option value="6">Six</option>--}}
+{{--                                                        <option value="8">Eight</option>--}}
+{{--                                                        <option value="10">Ten</option>--}}
                                                     </select>
                                                     <div class="invalid-feedback">
                                                         Please enter the Accordion tab number.
@@ -336,9 +336,20 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Select number of Tab List <span class="text-muted text-danger">*</span></label>
+                                                <select class="form-control select" name="list_number_3_process_sel" id="list_number_3_process_sel">
+                                                    <option disabled>Select Number of Tab List</option>
+                                                    <option value="4" selected>Four</option>
+                                                    <option value="8">Eight</option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Please enter the Accordion tab number.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mt-3">
                                             <label class="image-checkbox">
-                                                <input type="hidden" value="3" class="form-control" name="list_number_3_process_sel" id="list_number_3_process_sel" readonly>
-
                                                 <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/small_box_description.png')}}" width="100%" />
                                                 <input type="checkbox" name="section[]" value="small_box_description" id="small_box_description.png" />
                                                 <i class="ri ri-check-line hidden"></i>
