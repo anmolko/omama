@@ -45,8 +45,9 @@
                                 <div class="sc-heading-area sc-mb-35">
                                     <span class="sub-title"><i class="icon-line"></i> {{ucwords(@$homepage_info->why_subheading)}}</span>
                                     <h2 class="title">
-                                        {{ucwords(@$homepage_info->why_heading)}}
-    {{--                                   Business <span class="primary-color italic"> Success </span>--}}
+                                        <h2 class="section-title__title"><?php
+                                                $split = explode(" ", @$homepage_info->why_heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', @$homepage_info->why_heading)."\n"}}
+                                        <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
                                     </h2>
                                 </div>
                                 <div
@@ -141,7 +142,7 @@
                         <span class="sub-title"><i class="icon-line"></i> Our scope</span>
 
                         <h2 class="title">
-                           Closer look at vision and <span class="primary-color italic">Values</span>
+                           Closer look at our <span class="primary-color italic">Values</span>
                         </h2>
                     </div>
                 </div>
@@ -239,8 +240,9 @@
                                     <div class="sc-heading-area sc-mb-25">
                                         <span class="sub-title"><i class="icon-line"></i> {{$homepage_info->welcome_subheading ?? ''}}</span>
                                         <h2 class="title">
-                                            {{$homepage_info->welcome_heading ?? ''}}
-                                            {{--                                    <span class="primary-color italic">improve</span> Drastically--}}
+                                            <?php
+                                                $split = explode(" ", @$homepage_info->welcome_heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', @$homepage_info->welcome_heading)."\n"}}
+                                             <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
                                         </h2>
                                         <p class="description">
                                             {{ ucfirst(@$homepage_info->welcome_description) }}
@@ -263,8 +265,9 @@
                                 <div class="sc-heading-area sc-mb-25">
                                     <span class="sub-title"><i class="icon-line"></i> {{$homepage_info->welcome_subheading ?? ''}}</span>
                                     <h2 class="title">
-                                        {{$homepage_info->welcome_heading ?? ''}}
-    {{--                                    <span class="primary-color italic">improve</span> Drastically--}}
+                                        <?php
+                                        $split = explode(" ", @$homepage_info->welcome_heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', @$homepage_info->welcome_heading)."\n"}}
+                                        <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
                                     </h2>
                                     <p class="description">
                                         {{ ucfirst(@$homepage_info->welcome_description) }}
@@ -319,7 +322,9 @@
                             <div class="sc-heading-area sc-mb-35 text-center">
                                 <span class="sub-title"><i class="icon-line"></i> {{ucfirst(@$homepage_info->core_main_description)}}</span>
                                 <h2 class="title">
-                                    {{ucwords(@$homepage_info->core_main_heading)}}
+                                    <?php
+                                    $split = explode(" ", @$homepage_info->core_main_heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', @$homepage_info->core_main_heading)."\n"}}
+                                    <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
                                 </h2>
                             </div>
                         </div>
@@ -511,8 +516,12 @@
                 <div class="row">
                     <div class="col-lg-12 sc-pb-75 sc-md-pb-55">
                         <div class="sc-heading-area sc-mb-75 sc-md-mb-50">
-                            <span class="sub-title"><i class="icon-line"></i>{{@$recruitment[0]->description ?? 'The Work Flow'}}</span>
-                            <h2 class="title white-color">{{@$recruitment[0]->heading ?? 'Our Recruitment Process'}}</h2>
+                            <span class="sub-title"><i class="icon-line"></i> {{@$recruitments[0]->description ?? 'The Work Flow'}}</span>
+                            <h2 class="title white-color">
+                                <?php
+                                $split = explode(" ", @$recruitments[0]->heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', @$recruitments[0]->heading)."\n"}}
+                                <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
+                            </h2>
                         </div>
                         <div class="sc-process-content-area">
                             <div class="row">
@@ -554,7 +563,7 @@
                     <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
                         <div class="sc-heading-area sc-mb-15 text-center">
                             <span class="sub-title"><i class="icon-line"></i> Omama Manpower</span>
-                            <h2 class="title">Valuable Clients</h2>
+                            <h2 class="title">Valuable  <span class="primary-color italic">Clients</span></h2>
                         </div>
                     </div>
                     <div class="swiper sc-brand-slider">
@@ -629,7 +638,7 @@
                     <div class="col-lg-6 col-md-8">
                         <div class="sc-heading-area sc-mb-35 p-z-idex">
                             <span class="sub-title"><i class="icon-line"></i> Our Testimonials</span>
-                            <h2 class="title">Happy Customer Feedback About Our Service</h2>
+                            <h2 class="title">Happy Customer Feedback About Our <span class="primary-color italic">Service</span></h2>
                         </div>
                     </div>
                 </div>
@@ -756,7 +765,10 @@
                         <div class="sc-heading-area sc-mb-25">
                             <span class="sub-title"><i class="icon-line"></i> Omama Manpower</span>
                             <h2 class="title">
-                                {{ucwords(@$setting_data->grievance_heading)}}
+                                <?php
+                                $split = explode(" ", @$setting_data->grievance_heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$setting_data->grievance_heading))."\n"}}
+                                <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
+
                             </h2>
                             <p class="description">
                                 {{ ucfirst(@$setting_data->grievance_description) }}

@@ -66,7 +66,9 @@
                             <div class="sc-heading-area sc-mb-35">
                                 <span class="sub-title"><i class="icon-line"></i> {{$basic_elements->subheading??'Omama Manpower'}}</span>
                                 <h2 class="title">
-                                    {{ucwords(@$basic_elements->heading)}}
+                                    <?php
+                                    $split = explode(" ", @$basic_elements->heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$basic_elements->heading))."\n"}}
+                                    <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
                                 </h2>
                                 <div class="des">
                                     {!! @$basic_elements->description !!}
@@ -119,7 +121,11 @@
                         <div class="col-lg-6 sc-pb-75">
                             <div class="sc-heading-area sc-mb-35 sc-md-mb-50">
                                 <span class="sub-title"><i class="icon-line"></i>{{@$bgimage_elements->subheading ?? ''}}</span>
-                                <h2 class="title">{{@$bgimage_elements->heading ?? 'Delivering Solutions that Result in Happy Customers'}}</h2>
+                                <h2 class="title">
+                                    <?php
+                                    $split = explode(" ", @$bgimage_elements->heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$bgimage_elements->heading))."\n"}}
+                                    <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
+                                </h2>
                             </div>
                             <div class="sc-process-content-area sc-mb-45 ">
                                 <div class="row">
@@ -148,7 +154,9 @@
                             <div class="sc-heading-area sc-mb-55 sc-md-mb-35 text-center">
                                 <span class="sub-title"><i class="icon-line"></i> {{$flash_elements[0]->subheading}}</span>
                                 <h2 class="title">
-                                    {{$flash_elements[0]->heading}}
+                                    <?php
+                                    $split = explode(" ", @$flash_elements[0]->heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$flash_elements[0]->heading))."\n"}}
+                                    <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
                                 </h2>
                             </div>
                         </div>
@@ -184,7 +192,9 @@
                                 <div class="sc-heading-area sc-mb-35 text-center">
                                     <span class="sub-title"><i class="icon-line"></i> {{@$header_descp_elements->subheading ?? ''}}</span>
                                     <h2 class="title">
-                                        {{ucwords(@$header_descp_elements->heading)}}
+                                        <?php
+                                        $split = explode(" ", @$header_descp_elements->heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$header_descp_elements->heading))."\n"}}
+                                        <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
                                     </h2>
                                 </div>
                             </div>
@@ -211,7 +221,9 @@
                                 <div class="sc-heading-area sc-mb-25">
                                     <span class="sub-title"><i class="icon-line"></i> {{@$map_descp->subheading ?? ''}}</span>
                                     <h2 class="title">
-                                        {{ucwords(@$map_descp->heading ?? '')}}
+                                        <?php
+                                        $split = explode(" ", @$map_descp->heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$map_descp->heading ))."\n"}}
+                                        <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
                                     </h2>
                                     <div class="description" style="text-align: justify">
                                         {!! ucfirst(@$map_descp->description) !!}
@@ -244,7 +256,11 @@
                             <div class="col-xl-7 col-lg-8 lg-mb-30">
                                 <div class="blog__one-title lg-t-center">
                                     <span class="subtitle-one">{{ucwords(@$accordian2_elements[0]->subheading)}}</span>
-                                    <h2>{{ucwords(@$accordian2_elements[0]->heading)}}</h2>
+                                    <h2>
+                                        <?php
+                                        $split = explode(" ", @$accordian2_elements[0]->heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$accordian2_elements[0]->heading ))."\n"}}
+                                        <span class="primary-color italic"> {{$split[count($split)-1]}} </span>
+                                    </h2>
                                 </div>
                             </div>
 

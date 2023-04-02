@@ -35340,7 +35340,7 @@ PAGE LOAD ANIMATION
   border-radius: 3px;
 }
 .sc-footer-subscribe .sc-form-inner {
-  width: 55%;
+  width: 28%;
   gap: 10px;
 }
 .sc-footer-subscribe .sc-subscribe-title {
@@ -35386,9 +35386,10 @@ PAGE LOAD ANIMATION
   opacity: 1;
 }
 .sc-footer-subscribe .sc-primary-btn {
-  padding: 0;
-  min-width: 180px;
-  text-align: center;
+    padding: 16px;
+    min-width: 180px;
+    text-align: center;
+    font-size: 20px;
 }
 
 .subscribe-style2 input[type=email] {

@@ -1,7 +1,16 @@
 <!--=========== Footer Section Start =========-->
-<section class="sc-footer-section sc-footer-style2 sc-pt-120 footer-bg-image2 sc-md-pt-170">
+<section class="sc-footer-section sc-footer-style2 sc-pt-80 footer-bg-image2 sc-md-pt-170">
     <div class="container">
-
+        <div class="sc-footer-subscribe d-flex align-items-center justify-content-between">
+            <div class="sc-subscribe-text">
+                <h4 class="sc-subscribe-title white-color mb-0">Want to get started? We will help you and your business grow</h4>
+            </div>
+            <div class="sc-form-inner p-z-idex d-flex align-items-center justify-content-end">
+                <a href="{{route('contact')}}" class="sc-primary-btn">
+                    Contact us</a>
+                </div>
+            </div>
+        </div>
         <div class="row sc-pt-80 sc-pb-80 sc-md-pb-70">
             <div
                 class="col-xl-3 col-md-6 col-sm-12"
