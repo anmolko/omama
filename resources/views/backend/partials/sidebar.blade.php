@@ -132,7 +132,11 @@
 {{--                        <i class=" ri-price-tag-2-line"></i> <span data-key="t-widgets">Service Categories</span>--}}
 {{--                    </a>--}}
 {{--                </li>--}}
-
+                <li class="nav-item">
+                    <a class="nav-link menu-link @if(\Request::route()->getName() == 'album.index' || \Request::route()->getName() == 'album.show') active @endif" href="{{route('album.index')}}">
+                        <i class="ri-gallery-line"></i> <span data-key="t-widgets">Albums</span>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link @if(\Request::route()->getName() == 'clients.index') active @endif" href="{{route('clients.index')}}">
                         <i class="ri-user-2-line"></i> <span data-key="t-widgets">Clients</span>

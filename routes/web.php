@@ -49,7 +49,8 @@ Route::get('/our-service','App\Http\Controllers\FrontController@service')->name(
 Route::get('/blog/categories/{slug}', 'App\Http\Controllers\FrontController@blogCategories')->name('blog.category');
 Route::get('/blog', 'App\Http\Controllers\FrontController@blogs')->name('blog.frontend');
 Route::get('/faq', 'App\Http\Controllers\FrontController@faq')->name('faq.frontend');
-
+Route::get('/album', 'App\Http\Controllers\FrontController@album')->name('album');
+Route::get('/album/{album}/', 'App\Http\Controllers\FrontController@albumgallery')->name('album.gallery');
 
 Route::get('/privacy-policy', 'App\Http\Controllers\FrontController@privacy')->name('privacy.frontend');
 Route::get('/terms-condition', 'App\Http\Controllers\FrontController@terms')->name('term.frontend');
@@ -293,6 +294,19 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::post('/director-sortable','App\Http\Controllers\ManagingDirectorController@orderUpdateDirector')->name('director.order');
 
     //End of managing director
+
+    //Album
+    Route::get('/album', 'App\Http\Controllers\AlbumController@index')->name('album.index');
+    Route::get('/album/create', 'App\Http\Controllers\AlbumController@create')->name('album.create');
+    Route::post('/album', 'App\Http\Controllers\AlbumController@store')->name('album.store');
+    Route::put('/album/{album}', 'App\Http\Controllers\AlbumController@update')->name('album.update');
+    Route::delete('/album/{album}', 'App\Http\Controllers\AlbumController@destroy')->name('album.destroy');
+    Route::get('/album/{album}/edit', 'App\Http\Controllers\AlbumController@edit')->name('album.edit');
+    Route::get('/album/show/{id}', 'App\Http\Controllers\AlbumController@show')->name('album.show');
+    Route::put('/album-upload-gallery/{id}', 'App\Http\Controllers\AlbumController@uploadGallery')->name('album-gallery.update');
+    Route::post('/album-gallery/image-delete', 'App\Http\Controllers\AlbumController@deleteGallery')->name('album-gallery.delete');
+    Route::get('/album-gallery/{id}', 'App\Http\Controllers\AlbumController@getGallery')->name('album-gallery.display');
+    //End of Album
 
 });
 

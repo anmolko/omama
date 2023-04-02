@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
 use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\Faq;
@@ -598,10 +599,21 @@ class FrontController extends Controller
         $teams = Team::orderBy('order', 'asc')->paginate(12);
         return view('frontend.pages.team',compact('teams'));
     }
-//    public function director(){
-//        $director = ManagingDirector::orderBy('order', 'asc')->get();
-//        return view('frontend.pages.director',compact('director'));
-//    }
+
+
+    public function album(){
+        $albums = Album::with('gallery')->get();
+        return view('frontend.pages.album',compact('albums'));
+    }
+
+    public function albumgallery($slug){
+        $singleAlbum = Album::where('slug', $slug)->with('gallery')->first();
+        if (!$singleAlbum) {
+            return abort(404);
+        }
+        return view('frontend.pages.album_gallery',compact('singleAlbum'));
+    }
+
 
 
 }
