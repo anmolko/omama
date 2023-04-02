@@ -387,38 +387,43 @@
         @endif
 
         @if($value == "slider_list")
-            <div class="portfolio__area dark__image section-padding">
-                <div class="container-fluid p-0">
-                    <div class="row mb-60">
-                        <div class="col-xl-12">
-                            <div class="portfolio__area-title t-center">
-                                <span class="subtitle-one">{{ucwords(@$slider_list_elements[0]->description)}}</span>
-                                <h2>{{ucwords(@$slider_list_elements[0]->heading)}}</h2>
+            <div class="sc-company-section-area sc-pt-115 sc-md-pt-80">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+                            <div class="sc-heading-area text-center">
+                                <span class="sub-title white-sub-title"><i class="icon-line"></i> {{ucwords(@$slider_list_elements[0]->description)}}</span>
+                                <h2 class="title white-color">{{ucwords(@$slider_list_elements[0]->heading)}}</h2>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="swiper portfolio__area-slider">
-                                <div class="swiper-wrapper">
-                                    @for ($i = 1; $i <=@$list_3; $i++)
-                                        <div class="portfolio__area-item swiper-slide">
-                                            <img src="{{ asset('/images/section_elements/list_1/thumb/thumb_'.$slider_list_elements[$i-1]->list_image) }}" alt="">
-                                            <div class="portfolio__area-item-content">
-                                                <div class="portfolio__area-item-content-title">
-                                                    <h4><a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}">{{ucwords(@$slider_list_elements[$i-1]->list_header)}}</a></h4>
-                                                    <span class="text-eight">Omama Manpower</span>
-                                                </div>
-                                                <div class="portfolio__area-item-content-icon">
-                                                    <a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}">
-                                                        <img src="{{asset('assets/frontend/img/icon/up-arrow.png')}}" alt=""></a>
-                                                </div>
+                </div>
+            </div>
+
+            <div class="sc-project-section-area nagetive-margin sc-pb-100 sc-md-pb-80">
+                <div class="container">
+                    <div class="swiper sc-pagination-active sc-swiper-slider">
+                        <div class="swiper-wrapper">
+                            @for ($i = 1; $i <=@$list_3; $i++)
+                                <div class="swiper-slide">
+                                    <div class="sc-project-item">
+                                        <img src="{{ asset('/images/section_elements/list_1/thumb/thumb_'.$slider_list_elements[$i-1]->list_image) }}" alt="Image" />
+                                        <div class="sc-project-content-box">
+                                            <div class="sc-project-icon">
+                                                <a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}"><i class="icon-sliuder-arrow2"></i></a>
+                                            </div>
+                                            <div class="sc-project-text">
+                                                <span class="sub-title">Omama Manpower</span>
+                                                <h4><a class="title" href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}">
+                                                        {{ucwords(@$slider_list_elements[$i-1]->list_header)}}</a></h4>
                                             </div>
                                         </div>
-                                    @endfor
+                                    </div>
                                 </div>
-                            </div>
+                            @endfor
                         </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
                     </div>
                 </div>
             </div>
