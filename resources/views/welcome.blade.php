@@ -1,7 +1,17 @@
 @extends('frontend.layouts.master')
 @section('title') Home @endsection
 @section('css')
+    <link rel="stylesheet" href="{{asset('assets/frontend/css/lightbox.css')}}"><style>
 
+        #gallery #image-gallery .img-wrapper {
+            height: 270px;
+        }
+        #gallery img.img-responsive {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 @endsection
 @section('content')
     @if(count($sliders) > 0)
@@ -474,7 +484,7 @@
         <div class="sc-project-section-area sc-project-section-two sc-pt-100 sc-md-pt-80 sc-pb-120 sc-md-pb-80">
             <div class="container-fluid sc-project-container">   <div class="row">
                     <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
-                        <div class="sc-heading-area sc-mb-75 text-center">
+                        <div class="sc-heading-area sc-mt-45 sc-mb-45 text-center">
                             <span class="sub-title"><i class="icon-line"></i> What we provide</span>
                             <h2 class="title">
                                 Our Best <span class="primary-color italic">Services</span>
@@ -584,6 +594,7 @@
             </div>
         </div>
     @endif
+
     @if(count($latestJobs) > 1)
         <div class="sc-service-section-five sc-pt-100 sc-md-pt-80 sc-pb-100 sc-md-pb-90">
             <div class="container">
@@ -626,6 +637,45 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
+            </div>
+        </div>
+    @endif
+
+    @if($legal_data)
+        <div class="sc-project-section-area sc-project-section-two sc-pt-100 sc-md-pt-80 sc-pb-120 sc-md-pb-80">
+            <div class="container-fluid sc-project-container">   <div class="row">
+                    <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+                        <div class="sc-heading-area sc-mb-35 sc-mt-35 text-center">
+                            <span class="sub-title"><i class="icon-line"></i> {{ $legal_data['subheading'] ?? 'Our Company'}}</span>
+                            <h2 class="title">
+                                {{ $legal_data['heading'] ?? 'Our Legal Documents' }}
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="gallery" style="padding: 0px 30px 0 30px;">
+                    <div id="image-gallery">
+                        <div class="row">
+                            <div class="swiper sc-swiper-slider sc-pagination-active">
+                                <div class="swiper-wrapper">
+                                    @foreach(@$legal_data['data'] as $gallery_element)
+                                        <div class="swiper-slide col-lg-3 col-md-6 col-sm-6 col-xs-12 image">
+                                            <div class="img-wrapper">
+                                                <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}">
+                                                    <img src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" class="img-responsive"></a>
+                                                <div class="img-overlay">
+                                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+                        </div><!-- End row -->
+                    </div><!-- End image gallery -->
                 </div>
             </div>
         </div>
@@ -791,5 +841,5 @@
 @endsection
 
 @section('js')
-
+    <script src="{{asset('assets/frontend/js/lightbox.min.js')}}"></script>
 @endsection

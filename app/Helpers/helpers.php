@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Page;
+use App\Models\PageSection;
+use App\Models\SectionGallery;
 use App\Models\User;
 use App\Models\Menu;
 use App\Models\MenuItem;
@@ -238,5 +241,33 @@ if (!function_exists('get_country')) {
         }
         return $name;
 
+    }
+}
+
+if (!function_exists('get_legal_documents')) {
+    /**
+     * @return array
+     */
+    function get_legal_documents(): array
+    {
+
+        $values = [];
+        $page_detail = Page::with('sections')->where('slug', 'legal-document')->where('status','active')->first() ?? Page::with('sections')->where('slug', 'legal-documents')->where('status','active')->first();
+
+        if($page_detail){
+            $page_section = PageSection::with('page')->where('page_id', $page_detail->id)->orderBy('position', 'ASC')->get();
+            foreach ($page_section as $section){
+                if ($section->section_slug == 'gallery_section'){
+                    $values['data'] = SectionGallery::with('section')
+                        ->where('page_section_id', $section->id)
+                        ->get();
+                    $values['heading'] =$section->gallery_heading;
+                    $values['subheading'] = $section->gallery_subheading;
+                }
+            }
+            return $values;
+        }else{
+            return $values;
+        }
     }
 }

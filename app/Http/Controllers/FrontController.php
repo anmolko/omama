@@ -88,8 +88,9 @@ class FrontController extends Controller
         $today              = date('Y-m-d');
         $latestJobs         = Job::orderBy('created_at', 'DESC')->where('start_date','<=',$today)->take(3)->get();
         $recuruitment_index = [3,7,11,15];
+        $legal_data         = get_legal_documents();
 
-        return view('welcome',compact('director','subsidiaries','today','latestJobs','clients','recruitments','servicecategory','testimonials','clients','latestPosts','latestServices','countries','homepage_info','sliders','recuruitment_index'));
+        return view('welcome',compact('director','legal_data','subsidiaries','today','latestJobs','clients','recruitments','servicecategory','testimonials','clients','latestPosts','latestServices','countries','homepage_info','sliders','recuruitment_index'));
     }
 
 
@@ -276,6 +277,9 @@ class FrontController extends Controller
                     ->get();
             }
         }
+
+
+        dd($page_detail);
 
         return view('frontend.pages.dynamic_page',compact( 'page_detail','heading','subheading','sections','process_num','process_elements','map_descp','icon_title_elements','location_map','video_descp_elements','list_2','list_3','basic_elements','call1_elements','gallery2_elements','bgimage_elements','call2_elements','flash_elements','gallery_elements','header_descp_elements','accordian1_elements','accordian2_elements','slider_list_elements','contact_info_elements'));
 
