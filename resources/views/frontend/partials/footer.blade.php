@@ -44,6 +44,11 @@
                                 <a href="{{@$setting_data->linkedin}}"><i class="icon-linkedin-2"></i></a>
                             </li>
                         @endif
+                        @if(!empty(@$setting_data->ticktock))
+                            <li>
+                                <a href="{{@$setting_data->linkedin}}"> <i class="fa-brands fa-tiktok"></i></a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -254,6 +259,11 @@
             @if(@$setting_data->linkedin)
                 <li>
                     <a href="{{@$setting_data->linkedin}}"><i class="icon-linkedin-2"></i></a>
+                </li>
+            @endif
+            @if(!empty(@$setting_data->ticktock))
+                <li>
+                    <a href="{{@$setting_data->linkedin}}"> <i class="fa-brands fa-tiktok"></i></a>
                 </li>
             @endif
         </ul>

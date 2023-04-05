@@ -61,6 +61,7 @@ class SettingController extends Controller
             'linkedin'                  => $request->input('linkedin'),
             'youtube'                   => $request->input('youtube'),
             'instagram'                 => $request->input('instagram'),
+            'ticktock'                  => $request->input('ticktock'),
             'address'                   => $request->input('address'),
             'email'                     => $request->input('email'),
             'meta_title'                => $request->input('meta_title'),
@@ -152,6 +153,7 @@ class SettingController extends Controller
         $update_theme->linkedin                 =  $request->input('linkedin');
         $update_theme->youtube                  =  $request->input('youtube');
         $update_theme->instagram                =  $request->input('instagram');
+        $update_theme->ticktock                 =  $request->input('ticktock');
         $update_theme->address                  =  $request->input('address');
         $update_theme->email                    =  $request->input('email');
         $update_theme->meta_title               =  $request->input('meta_title');

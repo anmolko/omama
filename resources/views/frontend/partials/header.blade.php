@@ -134,6 +134,11 @@
                                         <a href="{{@$setting_data->linkedin}}"> <i class="icon-linkedin-2"></i></a>
                                     </li>
                                 @endif
+                                @if(!empty(@$setting_data->ticktock))
+                                    <li>
+                                        <a href="{{@$setting_data->linkedin}}"> <i class="fa-brands fa-tiktok"></i></a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -207,7 +212,7 @@
                         </div>
                         <div class="header-btn">
                             <a href="#"><i class="ri-search-line"></i></a>
-                            <a class="sc-primary-btn" href="contact.html">Get Consulting</a>
+                            <a class="sc-primary-btn" href="{{route('contact')}}">Get Consulting</a>
                         </div>
                     </div>
                 </div>
