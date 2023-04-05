@@ -642,7 +642,7 @@
         </div>
     @endif
 
-    @if($legal_data)
+    @if($legal_data && count($legal_data['data'])>0)
         <div class="sc-project-section-area sc-project-section-two sc-pt-100 sc-md-pt-80 sc-pb-120 sc-md-pb-80">
             <div class="container-fluid sc-project-container">   <div class="row">
                     <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
