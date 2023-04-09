@@ -263,7 +263,7 @@
             @endif
             @if(!empty(@$setting_data->ticktock))
                 <li>
-                    <a href="{{@$setting_data->linkedin}}"> <i class="fa-brands fa-tiktok"></i></a>
+                    <a href="{{@$setting_data->ticktock}}"> <i class="fa-brands fa-tiktok"></i></a>
                 </li>
             @endif
         </ul>

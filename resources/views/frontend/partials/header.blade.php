@@ -20,7 +20,7 @@
 
     <meta property="og:title" content="@if(!empty(@$setting_data->meta_title)) {{ucwords(@$setting_data->meta_title)}} @else  Omama Manpower Pvt Ltd @endif" />
     <meta property="og:type" content="Consultancy" />
-    <meta property="og:url" content="https://omama.com.np/" />
+    <meta property="og:url" content="https://omamamanpower.com" />
     <meta property="og:site_name" content="Omama Manpower Pvt Ltd" />
     <meta property="og:description" content="@if(!empty(@$setting_data->meta_description)) {{ucwords(@$setting_data->meta_description)}} @else Omama Manpower Pvt Ltd @endif " />
 
@@ -136,7 +136,7 @@
                                 @endif
                                 @if(!empty(@$setting_data->ticktock))
                                     <li>
-                                        <a href="{{@$setting_data->linkedin}}"> <i class="fa-brands fa-tiktok"></i></a>
+                                        <a href="{{@$setting_data->ticktock}}"> <i class="fa-brands fa-tiktok"></i></a>
                                     </li>
                                 @endif
                             </ul>
