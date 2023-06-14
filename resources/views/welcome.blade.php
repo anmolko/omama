@@ -681,6 +681,44 @@
         </div>
     @endif
 
+    @if(!empty($homepage_info->what_heading1))
+        <div class="sc-about-area position-relative sc-pt-120 sc-pb-10 sc-md-pb-75">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+
+                        <div class="sc-about-content-style sc-md-pt-95">
+                            <div class="sc-heading-area sc-mb-25">
+                                <span class="sub-title"><i class="icon-line"></i> {{ $homepage_info->what_heading2 ?? '' }}</span>
+                                <h2 class="title">
+                                    <h2 class="section-title__title"><?php
+                                        $split = explode(" ", @$homepage_info->what_heading1);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', @$homepage_info->what_heading1)."\n"}}
+                                        <span class="primary-color italic"> {{$split[count($split)-1]}} </span></h2>
+                                    </h2>
+                                <p class="description">
+                                    {{@$homepage_info->what_image1}}
+                                </p>
+                            </div>
+                            @if(@$homepage_info->what_heading4)
+                                <div class="slider-btn-area sc-ab-area d-flex align-items-center">
+                                    <div class="sc-slider-btn sc-mr-20">
+                                        <a class="sc-primary-btn" href="{{@$homepage_info->what_heading4}}">{{@$homesettings->what_heading3 ?? 'Learn more'}}</a>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6 sal-animate" data-sal="slide-left" data-sal-duration="800">
+                        <div class="sc-about-group-image sc-pl-40 sc-lg-pl-70 sc-md-pl-0 ">
+                            <img src="{{ @$homepage_info->what_image2 ? asset('/images/home/welcome/'.@$homepage_info->what_image2):''}}" alt="About" data-sal="slide-right" data-sal-duration="800" data-sal-delay="300" class="sal-animate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
     @if(count($testimonials) > 0)
         <div class="sc-brand-section-area sc-pt-100 sc-md-pt-80">
             <div class="container">
