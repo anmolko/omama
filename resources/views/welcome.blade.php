@@ -572,7 +572,7 @@
                 <div class="row">
                     <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
                         <div class="sc-heading-area sc-mb-15 text-center">
-                            <span class="sub-title"><i class="icon-line"></i> Omama Manpower</span>
+                            <span class="sub-title"><i class="icon-line"></i> Omama consulting</span>
                             <h2 class="title">Valuable  <span class="primary-color italic">Clients</span></h2>
                         </div>
                     </div>
@@ -813,7 +813,7 @@
                 <div class="col-lg-6" data-sal="slide-left" data-sal-duration="800">
                     <div class="sc-about-content-style sc-md-mt-95 sc-pl-40 sc-md-pl-0">
                         <div class="sc-heading-area sc-mb-25">
-                            <span class="sub-title"><i class="icon-line"></i> Omama Manpower</span>
+{{--                            <span class="sub-title"><i class="icon-line"></i> Omama Manpower</span>--}}
                             <h2 class="title">
                                 <?php
                                 $split = explode(" ", @$setting_data->grievance_heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$setting_data->grievance_heading))."\n"}}

@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="sc-slider-content p-z-idex">
-                        <div class="sc-slider-subtitle">Home - Page</div>
+{{--                        <div class="sc-slider-subtitle">Home - Page</div>--}}
                         <h1 class="slider-title white-color sc-mb-25 sc-sm-mb-15">{{ucwords(@$page_detail->name)}}</h1>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="sc-about-text-box sc-md-mt-50 sc-pl-30 sc-md-pl-0" data-sal="slide-left" data-sal-duration="800">
                             <div class="sc-heading-area sc-mb-35">
-                                <span class="sub-title"><i class="icon-line"></i> {{$basic_elements->subheading??'Omama Manpower'}}</span>
+                                <span class="sub-title"><i class="icon-line"></i> {{$basic_elements->subheading??''}}</span>
                                 <h2 class="title">
                                     <?php
                                     $split = explode(" ", @$basic_elements->heading);?> {{preg_replace('/\W\w+\s*(\W*)$/', '$1', ucwords(@$basic_elements->heading))."\n"}}
@@ -346,9 +346,8 @@
                             <div id="image-gallery">
                                 <div class="row">
                                     @foreach(@$gallery_elements as $gallery_element)
-
                                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 image">
-                                            <div class="img-wrapper">
+                                            <div class="{{ $page_detail->slug == 'legal-documents' || $page_detail->slug == 'legal-document' ? '':'img-wrapper' }}">
                                                 <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}">
                                                     <img src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" class="img-responsive"></a>
                                                 <div class="img-overlay">
@@ -393,7 +392,7 @@
                                                 <a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}"><i class="icon-sliuder-arrow2"></i></a>
                                             </div>
                                             <div class="sc-project-text">
-                                                <span class="sub-title">Omama Manpower</span>
+{{--                                                <span class="sub-title">Omama Manpower</span>--}}
                                                 <h4><a class="title" href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}">
                                                         {{ucwords(@$slider_list_elements[$i-1]->list_header)}}</a></h4>
                                             </div>
