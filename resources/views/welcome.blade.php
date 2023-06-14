@@ -662,7 +662,7 @@
                                 <div class="swiper-wrapper">
                                     @foreach(@$legal_data['data'] as $gallery_element)
                                         <div class="swiper-slide col-lg-3 col-md-6 col-sm-6 col-xs-12 image">
-                                            <div class="img-wrapper">
+                                            <div class="img-wrappers">
                                                 <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}">
                                                     <img src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" class="img-responsive"></a>
                                                 <div class="img-overlay">
