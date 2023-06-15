@@ -257,8 +257,6 @@
 
                            @include('backend.home.includes.mission_vision_tab')
 
-                           @include('backend.home.includes.awards_and_recognition')
-
                            @include('backend.home.includes.why_us_tab')
 
                            @include('backend.home.includes.call_action_tab')
@@ -266,6 +264,8 @@
                            @include('backend.home.includes.recruitment_process')
 
                            @include('backend.home.includes.status')
+
+                           @include('backend.home.includes.awards_and_recognition')
 
                         @endif
 

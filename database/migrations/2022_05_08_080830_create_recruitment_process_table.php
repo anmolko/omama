@@ -20,7 +20,7 @@ class CreateRecruitmentProcessTable extends Migration
             $table->longText('link')->nullable();
             $table->string('icon')->nullable();
             $table->string('title')->nullable();
-            $table->string('icon_description')->nullable();
+            $table->longText('icon_description')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

@@ -1,4 +1,4 @@
-<div class="tab-pane fade show active" id="awards-recognition" role="tabpanel">
+<div class="tab-pane fade" id="awards-recognition" role="tabpanel">
     {!! Form::open(['url'=>route('homepage.awards-recognition', @$homesettings->id),'id'=>'homesettings-awards-recognition-header-form','class'=>'needs-validation','novalidate'=>'','method'=>'PUT','enctype'=>'multipart/form-data']) !!}
         <div class="row  mb-4">
         <div class="col-lg-8">
